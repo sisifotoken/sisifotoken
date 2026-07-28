@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>$SIFO</title>
+<meta name="description" content="Against everything, against everyone." />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<meta property="og:title" content="$SIFO" />
+<meta property="og:description" content="Against everything, against everyone." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#1c1e21" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #1c1e21;
+    --panel: #24262a;
+    --panel-2: #2c2e33;
+    --border: rgba(245,240,225,0.10);
+    --border-strong: rgba(245,240,225,0.18);
+    --rust: #c9873c;
+    --rust-dim: rgba(201,135,60,0.5);
+    --cream: #f5f0e1;
+    --cream-dim: rgba(245,240,225,0.58);
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body{
+    height: 100%;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; }
+
+  /* layout shell */
+  .shell{
+    display: flex;
+    min-height: 100dvh;
+  }
+
+  /* sidebar (desktop) */
+  .sidebar{
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem 1.2rem;
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+  }
+
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .brand img{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .brand-text{
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    color: var(--rust);
+  }
+
+  .nav-label{
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin: 0 0 0.6rem 0.2rem;
+  }
+
+  .nav-group{
+    margin-bottom: 1.8rem;
+  }
+
+  .nav-item{
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--cream-dim);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-bottom: 0.25rem;
+  }
+
+  .nav-item img{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .nav-item:hover{
+    background: var(--panel-2);
+    color: var(--cream);
+  }
+
+  .nav-item.active{
+    background: rgba(201,135,60,0.12);
+    border-color: var(--rust-dim);
+    color: var(--cream);
+  }
+
+  .nav-item.active .nav-dot{
+    background: var(--rust);
+  }
+
+  .nav-dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cream-dim);
+    flex-shrink: 0;
+  }
+
+  .sidebar-footer{
+    margin-top: auto;
+    display: flex;
+    gap: 0.7rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .sidebar-footer a img{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    opacity: 0.55;
+    filter: grayscale(1);
+    transition: all 0.2s ease;
+  }
+
+  .sidebar-footer a:hover img{
+    opacity: 1;
+    filter: grayscale(0);
+  }
+
+  /* mobile top bar */
+  .topbar{
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
+
+  .topbar .brand{ margin: 0; }
+
+  .hamburger{
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-strong);
+    background: var(--panel-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  .hamburger span{
+    width: 18px;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 2px;
+  }
+
+  .overlay{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 45;
+  }
+
+  .overlay.open{ display: block; }
+
+  /* main content */
+  .main{
+    flex: 1;
+    min-width: 0;
+    padding: 3rem 3.5rem;
+  }
+
+  .hero{
+    margin-bottom: 2.2rem;
+  }
+
+  .hero-eyebrow{
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .hero h1{
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    letter-spacing: 0.01em;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero p{
+    font-size: 1.05rem;
+    color: var(--cream-dim);
+    max-width: 46ch;
+  }
+
+  .panel{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.8rem;
+    max-width: 560px;
+  }
+
+  .panel-title{
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 1.1rem;
+    color: var(--cream);
+  }
+
+  .info-row{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .info-row:last-child{ border-bottom: none; }
+
+  .info-label{
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    white-space: nowrap;
+  }
+
+  .info-value{
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--cream);
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .info-value.pending{
+    color: var(--rust);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
+  .buy-panel{
+    margin-top: 1rem;
+  }
+
+  .buy-btn-disabled{
+    display: block;
+    text-align: center;
+    padding: 0.8rem;
+    border: 1px dashed var(--border-strong);
+    border-radius: 8px;
+    color: var(--cream-dim);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .section{ display: none; }
+  .section.active{ display: block; }
+
+  @media (max-width: 860px){
+    .sidebar{ display: none; }
+    .topbar{ display: flex; }
+
+    .sidebar.mobile-open{
+      display: flex;
+      position: fixed;
+      inset: 0 auto 0 0;
+      z-index: 50;
+      width: 280px;
+      box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+    }
+
+    .main{ padding: 2rem 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">
+      <img src="/favicon.png" alt="$SIFO" />
+      <span class="brand-text">$SIFO</span>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="shell">
+    <nav class="sidebar" id="sidebar">
+      <div class="brand">
+        <img src="/favicon.png" alt="$SIFO" />
+        <span class="brand-text">$SIFO</span>
+      </div>
+
+      <div class="nav-group">
+        <p class="nav-label">Chains</p>
+        <button class="nav-item active" data-target="base" onclick="switchSection('base', this)">
+          <span class="nav-dot"></span> Base
+        </button>
+        <button class="nav-item" data-target="solana" onclick="switchSection('solana', this)">
+          <span class="nav-dot"></span> Solana
+        </button>
+        <button class="nav-item" data-target="hood" onclick="switchSection('hood', this)">
+          <span class="nav-dot"></span> Robinhood
+        </button>
+      </div>
+
+      <div class="nav-group">
+        <p class="nav-label">More</p>
+        <button class="nav-item" data-target="roadmap" onclick="switchSection('roadmap', this)">
+          <span class="nav-dot"></span> Roadmap
+        </button>
+        <button class="nav-item" data-target="share" onclick="switchSection('share', this)">
+          <span class="nav-dot"></span> Share
+        </button>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="https://x.com/sisifotoken" target="_blank" rel="noopener noreferrer"><img src="/x.png" alt="X" /></a>
+        <a href="https://farcaster.xyz/sisifotoken" target="_blank" rel="noopener noreferrer"><img src="/farcaster.png" alt="Farcaster" /></a>
+      </div>
+    </nav>
+
+    <main class="main">
+      <div class="hero">
+        <p class="hero-eyebrow">The rock always returns</p>
+        <h1>$SIFO</h1>
+        <p>Against everything, against everyone.</p>
+      </div>
+
+      <section class="section active" id="section-base">
+        <div class="panel">
+          <p class="panel-title">Base</p>
+          <div class="info-row"><span class="info-label">Chain</span><span class="info-value">Base</span></div>
+          <div class="info-row"><span class="info-label">Quote</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label">CA</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label">Total supply</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="buy-panel">
+            <span class="buy-btn-disabled">Buy links coming soon</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="section-solana">
+        <div class="panel">
+          <p class="panel-title">Solana</p>
+          <div class="info-row"><span class="info-label">Chain</span><span class="info-value">Solana</span></div>
+          <div class="info-row"><span class="info-label">Quote</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label">CA</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label">Total supply</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="buy-panel">
+            <span class="buy-btn-disabled">Buy links coming soon</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="section-hood">
+        <div class="panel">
+          <p class="panel-title">Robinhood</p>
+          <div class="info-row"><span class="info-label">Chain</span><span class="info-value">Robinhood</span></div>
+          <div class="info-row"><span class="info-label">Quote</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label">CA</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label">Total supply</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="buy-panel">
+            <span class="buy-btn-disabled">Buy links coming soon</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="section-roadmap">
+        <div class="panel">
+          <p class="panel-title">Roadmap</p>
+          <div class="info-row"><span class="info-value pending">Nothing here yet.</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="section-share">
+        <div class="panel">
+          <p class="panel-title">Share</p>
+          <div class="info-row"><span class="info-value pending">Coming soon.</span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  function openMobileNav(){
+    sidebar.classList.add('mobile-open');
+    overlay.classList.add('open');
+  }
+  function closeMobileNav(){
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('open');
+  }
+
+  hamburgerBtn.addEventListener('click', openMobileNav);
+  overlay.addEventListener('click', closeMobileNav);
+
+  function switchSection(id, btn){
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById('section-' + id).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    btn.classList.add('active');
+    closeMobileNav();
+  }
+</script>
+</body>
+</html>
