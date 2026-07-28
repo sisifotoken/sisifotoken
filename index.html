@@ -257,6 +257,78 @@
     max-width: 46ch;
   }
 
+  .lore-section{
+    max-width: 640px;
+    margin-top: 2.5rem;
+  }
+
+  .lore-chapter{
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    padding: 2rem 0;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .lore-chapter.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .lore-chapter:nth-child(even){
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  .lore-chapter img{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+  }
+
+  .lore-num{
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .lore-title{
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .lore-quote{
+    font-style: italic;
+    color: var(--cream-dim);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .lore-body{
+    font-size: 0.88rem;
+    color: var(--cream-dim);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 640px){
+    .lore-chapter,
+    .lore-chapter:nth-child(even){
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
   .panel{
     background: var(--panel);
     border: 1px solid var(--border);
@@ -406,7 +478,49 @@
       </div>
 
       <section class="section active" id="section-home">
-        <div class="panel">
+        <div class="lore-section">
+          <div class="lore-chapter">
+            <img src="/lore-1-condena.png" alt="The Sentence" />
+            <div>
+              <p class="lore-num">I</p>
+              <p class="lore-title">The Sentence</p>
+              <p class="lore-quote">He tricked death twice. The gods don't forgive twice.</p>
+              <p class="lore-body">They gave him a rock and a mountain, and called it eternity. They expected him to break.</p>
+            </div>
+          </div>
+
+          <div class="lore-chapter">
+            <img src="/favicon.png" alt="The Climb" />
+            <div>
+              <p class="lore-num">II</p>
+              <p class="lore-title">The Climb</p>
+              <p class="lore-quote">Every step is a step no one asked him to take.</p>
+              <p class="lore-body">The rock doesn't get lighter. The mountain doesn't get shorter. He pushes anyway.</p>
+            </div>
+          </div>
+
+          <div class="lore-chapter">
+            <img src="/lore-3-caida.png" alt="The Fall" />
+            <div>
+              <p class="lore-num">III</p>
+              <p class="lore-title">The Fall</p>
+              <p class="lore-quote">It always rolls back. That was never the point.</p>
+              <p class="lore-body">The gods wait for him to stop. He has never once given them the satisfaction.</p>
+            </div>
+          </div>
+
+          <div class="lore-chapter">
+            <img src="/lore-4-regreso.png" alt="The Return" />
+            <div>
+              <p class="lore-num">IV</p>
+              <p class="lore-title">The Return</p>
+              <p class="lore-quote">He walks back down. Not broken. Not tired. Ready.</p>
+              <p class="lore-body">Against everything, against everyone — tomorrow, he pushes again.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top: 2.5rem;">
           <p class="panel-title">Not launched. Not yet.</p>
           <p style="color:var(--cream-dim); font-size:0.92rem; line-height:1.6;">
             $SIFO hasn't minted anywhere yet. Pick a chain from the menu once it's live to see contract, quote and where to buy.
@@ -493,6 +607,16 @@
     btn.classList.add('active');
     closeMobileNav();
   }
+
+  const loreObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.lore-chapter').forEach(ch => loreObserver.observe(ch));
 </script>
 </body>
 </html>
