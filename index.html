@@ -145,6 +145,14 @@
     flex-shrink: 0;
   }
 
+  .nav-item img.nav-icon{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
   .sidebar-footer{
     margin-top: auto;
     display: flex;
@@ -356,15 +364,21 @@
       </div>
 
       <div class="nav-group">
+        <button class="nav-item active" data-target="home" onclick="switchSection('home', this)">
+          <span class="nav-dot"></span> Home
+        </button>
+      </div>
+
+      <div class="nav-group">
         <p class="nav-label">Chains</p>
-        <button class="nav-item active" data-target="base" onclick="switchSection('base', this)">
-          <span class="nav-dot"></span> Base
+        <button class="nav-item" data-target="base" onclick="switchSection('base', this)">
+          <img class="nav-icon" src="/base-chain.png" alt="" /> Base
         </button>
         <button class="nav-item" data-target="solana" onclick="switchSection('solana', this)">
-          <span class="nav-dot"></span> Solana
+          <img class="nav-icon" src="/solana.jpg" alt="" /> Solana
         </button>
         <button class="nav-item" data-target="hood" onclick="switchSection('hood', this)">
-          <span class="nav-dot"></span> Robinhood
+          <img class="nav-icon" src="/robinhood.png" alt="" /> Robinhood
         </button>
       </div>
 
@@ -391,7 +405,16 @@
         <p>Against everything, against everyone.</p>
       </div>
 
-      <section class="section active" id="section-base">
+      <section class="section active" id="section-home">
+        <div class="panel">
+          <p class="panel-title">Not launched. Not yet.</p>
+          <p style="color:var(--cream-dim); font-size:0.92rem; line-height:1.6;">
+            $SIFO hasn't minted anywhere yet. Pick a chain from the menu once it's live to see contract, quote and where to buy.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="section-base">
         <div class="panel">
           <p class="panel-title">Base</p>
           <div class="info-row"><span class="info-label">Chain</span><span class="info-value">Base</span></div>
