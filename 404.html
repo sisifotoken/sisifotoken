@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>$SIFO — not found</title>
+<meta name="description" content="This path doesn't lead anywhere." />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<meta name="theme-color" content="#1c1e21" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #1c1e21;
+    --rust: #c9873c;
+    --cream: #f5f0e1;
+    --cream-dim: rgba(245,240,225,0.58);
+    --border: rgba(245,240,225,0.10);
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body{
+    height: 100%;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+  }
+
+  main{
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8vh 6vw;
+  }
+
+  img{
+    width: clamp(110px, 18vw, 160px);
+    height: clamp(110px, 18vw, 160px);
+    border-radius: 50%;
+    margin-bottom: 1.8rem;
+    filter: grayscale(0.5) drop-shadow(0 14px 28px rgba(0,0,0,0.5));
+    opacity: 0.85;
+  }
+
+  h1{
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 8vw, 4rem);
+    color: var(--rust);
+    margin-bottom: 0.8rem;
+  }
+
+  p{
+    max-width: 34ch;
+    color: var(--cream-dim);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  a{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(245,240,225,0.03);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  a:hover{
+    border-color: rgba(201,135,60,0.5);
+    background: rgba(201,135,60,0.08);
+  }
+</style>
+</head>
+<body>
+  <main>
+    <img src="/favicon.png" alt="Sisyphus, off the path" />
+    <h1>404</h1>
+    <p>This path doesn't lead anywhere. Not every climb goes somewhere — but this one definitely doesn't.</p>
+    <a href="/">← back to $SIFO</a>
+  </main>
+</body>
+</html>
