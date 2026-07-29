@@ -509,6 +509,42 @@
 
     .main{ padding: 2rem 1.3rem; }
   }
+
+  .roadmap-phase{
+    border-bottom: 1px solid var(--border);
+    padding: 1.3rem 0;
+  }
+  .roadmap-phase:last-child{ border-bottom: none; }
+
+  .roadmap-status{
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  .status-done{ color: var(--rust); background: rgba(201,135,60,0.14); }
+  .status-active{ color: var(--cream); background: rgba(245,240,225,0.08); border: 1px solid var(--rust-dim); }
+  .status-pending{ color: var(--cream-dim); background: rgba(245,240,225,0.04); }
+
+  .roadmap-title{
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .roadmap-body{
+    font-size: 0.88rem;
+    color: var(--cream-dim);
+    line-height: 1.6;
+    max-width: 54ch;
+  }
+
+  
 </style>
 </head>
 <body>
@@ -669,10 +705,34 @@
         </div>
       </section>
 
-      <section class="section" id="section-roadmap">
-        <div class="panel">
+    <section class="section" id="section-roadmap">
+        <div class="panel" style="max-width:620px;">
           <p class="panel-title" data-en="Roadmap" data-es="Hoja de ruta">Roadmap</p>
-          <div class="info-row"><span class="info-value pending" data-en="Nothing here yet." data-es="Nada por aquí todavía.">Nothing here yet.</span></div>
+          <p style="color:var(--cream-dim); font-size:0.85rem; margin-bottom:1.3rem;" data-en="The stone doesn't stop. Neither does the plan." data-es="La piedra no se detiene. Tampoco el plan.">The stone doesn't stop. Neither does the plan.</p>
+
+          <div class="roadmap-phase">
+            <span class="roadmap-status status-done" data-en="Done" data-es="Completado">Done</span>
+            <p class="roadmap-title" data-en="Phase 0 — The Weight" data-es="Fase 0 — El Peso">Phase 0 — The Weight</p>
+            <p class="roadmap-body" data-en="Identity, lore, bilingual site, own domain, social accounts live. The stone is at the base, ready to climb." data-es="Identidad, lore, web bilingüe, dominio propio, redes sociales activas. La piedra está en la base, lista para subir.">Identity, lore, bilingual site, own domain, social accounts live. The stone is at the base, ready to climb.</p>
+          </div>
+
+          <div class="roadmap-phase">
+            <span class="roadmap-status status-active" data-en="In progress" data-es="En curso">In progress</span>
+            <p class="roadmap-title" data-en="Phase 1 — The First Push" data-es="Fase 1 — El Primer Empujón">Phase 1 — The First Push</p>
+            <p class="roadmap-body" data-en="Contract mint, choice of launch chain(s), launchpad listing(s). The moment $SIFO stops being an idea and starts rolling." data-es="Minteo del contrato, elección de cadena(s) inicial(es), listado en launchpad(s). El momento en que $SIFO deja de ser una idea y empieza a rodar.">Contract mint, choice of launch chain(s), launchpad listing(s). The moment $SIFO stops being an idea and starts rolling.</p>
+          </div>
+
+          <div class="roadmap-phase">
+            <span class="roadmap-status status-pending" data-en="Next" data-es="Siguiente">Next</span>
+            <p class="roadmap-title" data-en="Phase 2 — The Slope" data-es="Fase 2 — La Cuesta">Phase 2 — The Slope</p>
+            <p class="roadmap-body" data-en="Community activation (Discord), marketing push on X and Farcaster, first collabs or mentions. This is where you see if the stone climbs on its own or needs pushing." data-es="Activación de comunidad (Discord), campaña de marketing en X y Farcaster, primeras colaboraciones o menciones. Aquí es donde se ve si la piedra sube sola o hay que empujarla.">Community activation (Discord), marketing push on X and Farcaster, first collabs or mentions. This is where you see if the stone climbs on its own or needs pushing.</p>
+          </div>
+
+          <div class="roadmap-phase">
+            <span class="roadmap-status status-pending" data-en="Ongoing" data-es="Continuo">Ongoing</span>
+            <p class="roadmap-title" data-en="Phase 3 — The Summit That Never Comes" data-es="Fase 3 — La Cima (que nunca llega)">Phase 3 — The Summit That Never Comes</p>
+            <p class="roadmap-body" data-en="Expansion to more chains, added utility, a possible NFT collection as 'season 2'. No fixed finish line — the goal is to keep climbing, not to arrive." data-es="Expansión a más cadenas, utilidad adicional, posible colección NFT como 'season 2'. Sin línea de meta fija — el objetivo es seguir subiendo, no llegar arriba.">Expansion to more chains, added utility, a possible NFT collection as "season 2". No fixed finish line — the goal is to keep climbing, not to arrive.</p>
+          </div>
         </div>
       </section>
 
