@@ -329,6 +329,31 @@
     }
   }
 
+  .lore-chapter img{
+    cursor: zoom-in;
+  }
+
+  .lightbox{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,11,13,0.92);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    cursor: zoom-out;
+  }
+
+  .lightbox.open{ display: flex; }
+
+  .lightbox img{
+    max-width: min(80vw, 640px);
+    max-height: 85vh;
+    border-radius: 50%;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+  }
+
   .panel{
     background: var(--panel);
     border: 1px solid var(--border);
@@ -480,7 +505,7 @@
       <section class="section active" id="section-home">
         <div class="lore-section">
           <div class="lore-chapter">
-            <img src="/lore-sentence.png" alt="The Sentence" />
+            <img src="/lore-sentence.png" alt="The Sentence" onclick="openLightbox(this.src)" />
             <div>
               <p class="lore-num">I</p>
               <p class="lore-title">The Sentence</p>
@@ -490,7 +515,7 @@
           </div>
 
           <div class="lore-chapter">
-            <img src="/lore-fall.png" alt="The Fall" />
+            <img src="/lore-fall.png" alt="The Fall" onclick="openLightbox(this.src)" />
             <div>
               <p class="lore-num">II</p>
               <p class="lore-title">The Fall</p>
@@ -500,7 +525,7 @@
           </div>
 
           <div class="lore-chapter">
-            <img src="/lore-return.png" alt="The Return" />
+            <img src="/lore-return.png" alt="The Return" onclick="openLightbox(this.src)" />
             <div>
               <p class="lore-num">III</p>
               <p class="lore-title">The Return</p>
@@ -510,7 +535,7 @@
           </div>
 
           <div class="lore-chapter">
-            <img src="/lore-climb.png" alt="The Climb" />
+            <img src="/lore-climb.png" alt="The Climb" onclick="openLightbox(this.src)" />
             <div>
               <p class="lore-num">IV</p>
               <p class="lore-title">The Climb</p>
@@ -583,6 +608,10 @@
     </main>
   </div>
 
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
 <script>
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const sidebar = document.getElementById('sidebar');
@@ -617,6 +646,14 @@
   }, { threshold: 0.2 });
 
   document.querySelectorAll('.lore-chapter').forEach(ch => loreObserver.observe(ch));
+
+  function openLightbox(src){
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+  }
 </script>
 </body>
 </html>
