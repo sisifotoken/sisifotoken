@@ -437,6 +437,42 @@
     margin-top: 1rem;
   }
 
+  .share-buttons{
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 0.9rem;
+  }
+
+  .share-btn{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel-2);
+    text-decoration: none;
+    color: var(--cream-dim);
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .share-btn:hover{
+    border-color: var(--rust-dim);
+    background: rgba(201,135,60,0.08);
+    color: var(--cream);
+  }
+
+  .share-btn img{
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
   .buy-btn-disabled{
     display: block;
     text-align: center;
@@ -635,7 +671,18 @@
       <section class="section" id="section-share">
         <div class="panel">
           <p class="panel-title" data-en="Share" data-es="Compartir">Share</p>
-          <div class="info-row"><span class="info-value pending" data-en="Coming soon." data-es="Próximamente.">Coming soon.</span></div>
+          <p style="color:var(--cream-dim); font-size:0.85rem; line-height:1.55;" data-en="Tell them the rock always returns." data-es="Diles que la roca siempre vuelve.">Tell them the rock always returns.</p>
+          <div class="share-buttons">
+            <a class="share-btn" href="https://twitter.com/intent/tweet?text=%24SIFO&url=https%3A%2F%2Fsisifotoken.xyz%2F" target="_blank" rel="noopener noreferrer">
+              <img src="/x.png" alt="X" /> X
+            </a>
+            <a class="share-btn" href="https://t.me/share/url?url=https%3A%2F%2Fsisifotoken.xyz%2F&text=%24SIFO" target="_blank" rel="noopener noreferrer">
+              <img src="/telegram.png" alt="Telegram" /> Telegram
+            </a>
+            <a class="share-btn" href="https://warpcast.com/~/compose?text=%24SIFO&embeds[]=https%3A%2F%2Fsisifotoken.xyz%2F" target="_blank" rel="noopener noreferrer">
+              <img src="/farcaster.png" alt="Farcaster" /> Farcaster
+            </a>
+          </div>
         </div>
       </section>
     </main>
