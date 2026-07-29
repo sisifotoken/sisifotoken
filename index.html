@@ -153,6 +153,34 @@
     flex-shrink: 0;
   }
 
+  .lang-toggle{
+    display: flex;
+    gap: 0.3rem;
+    margin-left: auto;
+  }
+
+  .lang-btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-strong);
+    background: var(--panel-2);
+    color: var(--cream-dim);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .lang-btn:hover{ color: var(--cream); }
+
+  .lang-btn.active{
+    border-color: var(--rust-dim);
+    background: rgba(201,135,60,0.15);
+    color: var(--cream);
+  }
+
   .sidebar-footer{
     margin-top: auto;
     display: flex;
@@ -462,44 +490,48 @@
 
       <div class="nav-group">
         <button class="nav-item active" data-target="home" onclick="switchSection('home', this)">
-          <span class="nav-dot"></span> Home
+          <span class="nav-dot"></span> <span data-en="Home" data-es="Inicio">Home</span>
         </button>
       </div>
 
       <div class="nav-group">
-        <p class="nav-label">Chains</p>
+        <p class="nav-label" data-en="Chains" data-es="Cadenas">Chains</p>
         <button class="nav-item" data-target="base" onclick="switchSection('base', this)">
-          <img class="nav-icon" src="/base-chain.png" alt="" /> Base
+          <img class="nav-icon" src="/base-chain.png" alt="" /> <span data-en="Base" data-es="Base">Base</span>
         </button>
         <button class="nav-item" data-target="solana" onclick="switchSection('solana', this)">
-          <img class="nav-icon" src="/solana.jpg" alt="" /> Solana
+          <img class="nav-icon" src="/solana.png" alt="" /> <span data-en="Solana" data-es="Solana">Solana</span>
         </button>
         <button class="nav-item" data-target="hood" onclick="switchSection('hood', this)">
-          <img class="nav-icon" src="/robinhood.png" alt="" /> Robinhood
+          <img class="nav-icon" src="/robinhood.png" alt="" /> <span data-en="Robinhood" data-es="Robinhood">Robinhood</span>
         </button>
       </div>
 
       <div class="nav-group">
-        <p class="nav-label">More</p>
+        <p class="nav-label" data-en="More" data-es="Más">More</p>
         <button class="nav-item" data-target="roadmap" onclick="switchSection('roadmap', this)">
-          <span class="nav-dot"></span> Roadmap
+          <span class="nav-dot"></span> <span data-en="Roadmap" data-es="Hoja de ruta">Roadmap</span>
         </button>
         <button class="nav-item" data-target="share" onclick="switchSection('share', this)">
-          <span class="nav-dot"></span> Share
+          <span class="nav-dot"></span> <span data-en="Share" data-es="Compartir">Share</span>
         </button>
       </div>
 
       <div class="sidebar-footer">
         <a href="https://x.com/sisifotoken" target="_blank" rel="noopener noreferrer"><img src="/x.png" alt="X" /></a>
         <a href="https://farcaster.xyz/sisifotoken" target="_blank" rel="noopener noreferrer"><img src="/farcaster.png" alt="Farcaster" /></a>
+        <div class="lang-toggle">
+          <button class="lang-btn" id="langBtnEn" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" id="langBtnEs" onclick="setLang('es')">ES</button>
+        </div>
       </div>
     </nav>
 
     <main class="main">
       <div class="hero">
-        <p class="hero-eyebrow">The rock always returns</p>
+        <p class="hero-eyebrow" data-en="The rock always returns" data-es="La roca siempre vuelve">The rock always returns</p>
         <h1>$SIFO</h1>
-        <p>Against everything, against everyone.</p>
+        <p data-en="Against everything, against everyone." data-es="Contra todo, contra todos.">Against everything, against everyone.</p>
       </div>
 
       <section class="section active" id="section-home">
@@ -508,9 +540,9 @@
             <img src="/lore-sentence.png" alt="The Sentence" onclick="openLightbox(this.src)" />
             <div>
               <p class="lore-num">I</p>
-              <p class="lore-title">The Sentence</p>
-              <p class="lore-quote">He tricked death twice. The gods don't forgive twice.</p>
-              <p class="lore-body">They gave him a rock and a mountain, and called it eternity. They expected him to break.</p>
+              <p class="lore-title" data-en="The Sentence" data-es="La Condena">The Sentence</p>
+              <p class="lore-quote" data-en="He tricked death twice. The gods don't forgive twice." data-es="Engañó a la muerte dos veces. Los dioses no perdonan dos veces.">He tricked death twice. The gods don't forgive twice.</p>
+              <p class="lore-body" data-en="They gave him a rock and a mountain, and called it eternity. They expected him to break." data-es="Le dieron una roca y una montaña, y lo llamaron eternidad. Esperaban que se rindiera.">They gave him a rock and a mountain, and called it eternity. They expected him to break.</p>
             </div>
           </div>
 
@@ -518,9 +550,9 @@
             <img src="/lore-fall.png" alt="The Fall" onclick="openLightbox(this.src)" />
             <div>
               <p class="lore-num">II</p>
-              <p class="lore-title">The Fall</p>
-              <p class="lore-quote">It always rolls back. That was never the point.</p>
-              <p class="lore-body">The gods wait for him to stop. He has never once given them the satisfaction.</p>
+              <p class="lore-title" data-en="The Fall" data-es="La Caída">The Fall</p>
+              <p class="lore-quote" data-en="It always rolls back. That was never the point." data-es="Siempre vuelve a caer. Nunca fue esa la cuestión.">It always rolls back. That was never the point.</p>
+              <p class="lore-body" data-en="The gods wait for him to stop. He has never once given them the satisfaction." data-es="Los dioses esperan a que se detenga. Nunca les ha dado esa satisfacción.">The gods wait for him to stop. He has never once given them the satisfaction.</p>
             </div>
           </div>
 
@@ -528,9 +560,9 @@
             <img src="/lore-return.png" alt="The Return" onclick="openLightbox(this.src)" />
             <div>
               <p class="lore-num">III</p>
-              <p class="lore-title">The Return</p>
-              <p class="lore-quote">He walks back down. Not broken. Not tired. Ready.</p>
-              <p class="lore-body">Against everything, against everyone — tomorrow, he pushes again.</p>
+              <p class="lore-title" data-en="The Return" data-es="El Regreso">The Return</p>
+              <p class="lore-quote" data-en="He walks back down. Not broken. Not tired. Ready." data-es="Baja de nuevo. Sin quebrarse. Sin cansancio. Listo.">He walks back down. Not broken. Not tired. Ready.</p>
+              <p class="lore-body" data-en="Against everything, against everyone — tomorrow, he pushes again." data-es="Contra todo, contra todos — mañana, vuelve a empujar.">Against everything, against everyone — tomorrow, he pushes again.</p>
             </div>
           </div>
 
@@ -538,17 +570,17 @@
             <img src="/lore-climb.png" alt="The Climb" onclick="openLightbox(this.src)" />
             <div>
               <p class="lore-num">IV</p>
-              <p class="lore-title">The Climb</p>
-              <p class="lore-quote">Every step is a step no one asked him to take.</p>
-              <p class="lore-body">The rock doesn't get lighter. The mountain doesn't get shorter. He pushes anyway.</p>
+              <p class="lore-title" data-en="The Climb" data-es="La Subida">The Climb</p>
+              <p class="lore-quote" data-en="Every step is a step no one asked him to take." data-es="Cada paso es un paso que nadie le pidió dar.">Every step is a step no one asked him to take.</p>
+              <p class="lore-body" data-en="The rock doesn't get lighter. The mountain doesn't get shorter. He pushes anyway." data-es="La roca no pesa menos. La montaña no se acorta. Y aun así, empuja.">The rock doesn't get lighter. The mountain doesn't get shorter. He pushes anyway.</p>
             </div>
           </div>
         </div>
 
         <div class="panel" style="margin-top: 2.5rem;">
-          <p class="panel-title">Not launched. Not yet.</p>
+          <p class="panel-title" data-en="Not launched. Not yet." data-es="Aún no. Todavía no.">Not launched. Not yet.</p>
           <p style="color:var(--cream-dim); font-size:0.92rem; line-height:1.6;">
-            $SIFO hasn't minted anywhere yet. Pick a chain from the menu once it's live to see contract, quote and where to buy.
+            <span data-en="$SIFO hasn't minted anywhere yet. Pick a chain from the menu once it's live to see contract, quote and where to buy." data-es="$SIFO todavía no se ha minteado en ninguna cadena. Elige una desde el menú cuando esté activa para ver el contrato, la cotización y dónde comprar.">$SIFO hasn't minted anywhere yet. Pick a chain from the menu once it's live to see contract, quote and where to buy.</span>
           </p>
         </div>
       </section>
@@ -556,12 +588,12 @@
       <section class="section" id="section-base">
         <div class="panel">
           <p class="panel-title">Base</p>
-          <div class="info-row"><span class="info-label">Chain</span><span class="info-value">Base</span></div>
-          <div class="info-row"><span class="info-label">Quote</span><span class="info-value pending">Not launched yet</span></div>
-          <div class="info-row"><span class="info-label">CA</span><span class="info-value pending">Not launched yet</span></div>
-          <div class="info-row"><span class="info-label">Total supply</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Base</span></div>
+          <div class="info-row"><span class="info-label" data-en="Quote" data-es="Cotización">Quote</span><span class="info-value pending" data-en="Not launched yet" data-es="Aún no lanzado">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value pending" data-en="Not launched yet" data-es="Aún no lanzado">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label" data-en="Total supply" data-es="Suministro total">Total supply</span><span class="info-value pending" data-en="Not launched yet" data-es="Aún no lanzado">Not launched yet</span></div>
           <div class="buy-panel">
-            <span class="buy-btn-disabled">Buy links coming soon</span>
+            <span class="buy-btn-disabled" data-en="Buy links coming soon" data-es="Enlaces de compra próximamente">Buy links coming soon</span>
           </div>
         </div>
       </section>
@@ -569,12 +601,12 @@
       <section class="section" id="section-solana">
         <div class="panel">
           <p class="panel-title">Solana</p>
-          <div class="info-row"><span class="info-label">Chain</span><span class="info-value">Solana</span></div>
-          <div class="info-row"><span class="info-label">Quote</span><span class="info-value pending">Not launched yet</span></div>
-          <div class="info-row"><span class="info-label">CA</span><span class="info-value pending">Not launched yet</span></div>
-          <div class="info-row"><span class="info-label">Total supply</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Solana</span></div>
+          <div class="info-row"><span class="info-label" data-en="Quote" data-es="Cotización">Quote</span><span class="info-value pending" data-en="Not launched yet" data-es="Aún no lanzado">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value pending" data-en="Not launched yet" data-es="Aún no lanzado">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label" data-en="Total supply" data-es="Suministro total">Total supply</span><span class="info-value pending" data-en="Not launched yet" data-es="Aún no lanzado">Not launched yet</span></div>
           <div class="buy-panel">
-            <span class="buy-btn-disabled">Buy links coming soon</span>
+            <span class="buy-btn-disabled" data-en="Buy links coming soon" data-es="Enlaces de compra próximamente">Buy links coming soon</span>
           </div>
         </div>
       </section>
@@ -582,27 +614,27 @@
       <section class="section" id="section-hood">
         <div class="panel">
           <p class="panel-title">Robinhood</p>
-          <div class="info-row"><span class="info-label">Chain</span><span class="info-value">Robinhood</span></div>
-          <div class="info-row"><span class="info-label">Quote</span><span class="info-value pending">Not launched yet</span></div>
-          <div class="info-row"><span class="info-label">CA</span><span class="info-value pending">Not launched yet</span></div>
-          <div class="info-row"><span class="info-label">Total supply</span><span class="info-value pending">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Robinhood</span></div>
+          <div class="info-row"><span class="info-label" data-en="Quote" data-es="Cotización">Quote</span><span class="info-value pending" data-en="Not launched yet" data-es="Aún no lanzado">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value pending" data-en="Not launched yet" data-es="Aún no lanzado">Not launched yet</span></div>
+          <div class="info-row"><span class="info-label" data-en="Total supply" data-es="Suministro total">Total supply</span><span class="info-value pending" data-en="Not launched yet" data-es="Aún no lanzado">Not launched yet</span></div>
           <div class="buy-panel">
-            <span class="buy-btn-disabled">Buy links coming soon</span>
+            <span class="buy-btn-disabled" data-en="Buy links coming soon" data-es="Enlaces de compra próximamente">Buy links coming soon</span>
           </div>
         </div>
       </section>
 
       <section class="section" id="section-roadmap">
         <div class="panel">
-          <p class="panel-title">Roadmap</p>
-          <div class="info-row"><span class="info-value pending">Nothing here yet.</span></div>
+          <p class="panel-title" data-en="Roadmap" data-es="Hoja de ruta">Roadmap</p>
+          <div class="info-row"><span class="info-value pending" data-en="Nothing here yet." data-es="Nada por aquí todavía.">Nothing here yet.</span></div>
         </div>
       </section>
 
       <section class="section" id="section-share">
         <div class="panel">
-          <p class="panel-title">Share</p>
-          <div class="info-row"><span class="info-value pending">Coming soon.</span></div>
+          <p class="panel-title" data-en="Share" data-es="Compartir">Share</p>
+          <div class="info-row"><span class="info-value pending" data-en="Coming soon." data-es="Próximamente.">Coming soon.</span></div>
         </div>
       </section>
     </main>
@@ -613,6 +645,19 @@
   </div>
 
 <script>
+  function setLang(lang){
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = lang === 'es' ? el.dataset.es : el.dataset.en;
+    });
+    document.getElementById('langBtnEn').classList.toggle('active', lang === 'en');
+    document.getElementById('langBtnEs').classList.toggle('active', lang === 'es');
+    document.documentElement.lang = lang;
+  }
+
+  const browserLang = (navigator.language || 'en').toLowerCase();
+  const initialLang = browserLang.startsWith('es') ? 'es' : 'en';
+  setLang(initialLang);
+
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('overlay');
