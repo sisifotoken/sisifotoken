@@ -158,6 +158,15 @@
     flex-shrink: 0;
   }
 
+  .nav-icon-svg{
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+  }
+  
   .nav-item img.nav-icon{
     width: 18px;
     height: 18px;
@@ -575,7 +584,8 @@
 
       <div class="nav-group">
         <button class="nav-item active" data-target="home" onclick="switchSection('home', this)">
-          <span class="nav-dot"></span> <span data-en="Home" data-es="Inicio">Home</span>
+          <svg class="nav-icon-svg" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/> <span data-en="Home" data-es="Inicio">Home</span>
+          </svg>
         </button>
       </div>
 
@@ -595,10 +605,10 @@
       <div class="nav-group">
         <p class="nav-label" data-en="More" data-es="Más">More</p>
         <button class="nav-item" data-target="roadmap" onclick="switchSection('roadmap', this)">
-          <span class="nav-dot"></span> <span data-en="Roadmap" data-es="Hoja de ruta">Roadmap</span>
+          <svg class="nav-icon-svg" viewBox="0 0 24 24"><path d="M4 21V4"/><path d="M4 4h13l-2.5 4L17 12H4"/></svg> <span data-en="Roadmap" data-es="Hoja de ruta">Roadmap</span>
         </button>
         <button class="nav-item" data-target="share" onclick="switchSection('share', this)">
-          <span class="nav-dot"></span> <span data-en="Share" data-es="Compartir">Share</span>
+          <svg class="nav-icon-svg" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><line x1="8.2" y1="10.8" x2="15.8" y2="7.2"/><line x1="8.2" y1="13.2" x2="15.8" y2="16.8"/></svg> <span data-en="Share" data-es="Compartir">Share</span>
         </button>
       </div>
 
