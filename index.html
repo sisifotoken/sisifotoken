@@ -456,6 +456,17 @@
     font-size: 0.85rem;
   }
 
+  .info-value.copyable{
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .info-value.copyable:hover{
+    color: var(--rust);
+  }
+  .info-value.copyable.copied{
+    color: var(--rust);
+  }
+  
   .buy-panel{
     margin-top: 1rem;
   }
@@ -688,7 +699,7 @@
           <p class="panel-title">Base</p>
           <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Base</span></div>
           <div class="info-row"><span class="info-label" data-en="Quote" data-es="Cotización">Quote</span><span class="info-value">ETH</span></div>
-          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value">0xb20000000000000000000077859adc891255a401</span></div>
+          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value copyable" title="Click to copy">0xb20000000000000000000077859adc891255a401</span></div>
           <div class="info-row"><span class="info-label" data-en="Total supply" data-es="Suministro total">Total supply</span><span class="info-value">1,000,000,000</span></div>
           <div class="buy-panel">
             <a class="buy-btn-disabled" href="https://launch.o1.exchange/token/0xb20000000000000000000077859AdC891255a401?chain=8453" target="_blank" rel="noopener noreferrer"
@@ -705,7 +716,7 @@
           <p class="panel-title">Solana</p>
           <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Solana</span></div>
           <div class="info-row"><span class="info-label" data-en="Quote" data-es="Cotización">Quote</span><span class="info-value">SOL</span></div>
-          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value">AyH43fr9mEUZHfAwLtyCPyTAwWbKZMkgQztT4Lg6pump</span></div>
+          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value copyable" title="Click to copy">AyH43fr9mEUZHfAwLtyCPyTAwWbKZMkgQztT4Lg6pump</span></div>
           <div class="info-row"><span class="info-label" data-en="Total supply" data-es="Suministro total">Total supply</span><span class="info-value">1,000,000,000</span></div>
           <div class="buy-panel">
             <a class="buy-btn-disabled" href="https://pump.fun/coin/AyH43fr9mEUZHfAwLtyCPyTAwWbKZMkgQztT4Lg6pump" target="_blank" rel="noopener noreferrer"
@@ -722,7 +733,7 @@
           <p class="panel-title">Robinhood</p>
           <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Robinhood</span></div>
           <div class="info-row"><span class="info-label" data-en="Quote" data-es="Cotización">Quote</span><span class="info-value">ETH</span></div>
-          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value">0x46d965721F6588345209c25841365944FCcF4b97</span></div>
+          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value copyable" title="Click to copy">0x46d965721F6588345209c25841365944FCcF4b97</span></div>
           <div class="info-row"><span class="info-label" data-en="Total supply" data-es="Suministro total">Total supply</span><span class="info-value">1,000,000,000</span></div>
           <div class="buy-panel">
             <a class="buy-btn-disabled" href="https://app.virtuals.io/virtuals/125923" target="_blank" rel="noopener noreferrer"
@@ -844,6 +855,20 @@
   function closeLightbox(){
     document.getElementById('lightbox').classList.remove('open');
   }
+
+  document.querySelectorAll('.info-value.copyable').forEach(el => {
+    const original = el.textContent;
+    el.addEventListener('click', () => {
+      navigator.clipboard.writeText(original).then(() => {
+        el.textContent = 'Copied!';
+        el.classList.add('copied');
+        setTimeout(() => {
+          el.textContent = original;
+          el.classList.remove('copied');
+        }, 1200);
+      });
+    });
+  });
 </script>
 </body>
 </html>
