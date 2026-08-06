@@ -1,593 +1,591 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>$SIFO</title>
-<meta name="description" content="Against everything, against everyone." />
-<link rel="icon" type="image/png" href="/favicon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>$SIFO</title>
+  <meta name="description" content="Against everything, against everyone." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
 
-<meta property="og:title" content="$SIFO" />
-<meta property="og:description" content="Against everything, against everyone." />    
-<meta property="og:image" content="https://www.sisifotoken.xyz/og.png" />
-<meta property="og:url" content="https://www.sisifotoken.xyz/" />
-<meta property="og:type" content="website" />
+  <meta property="og:title" content="$SIFO" />
+  <meta property="og:description" content="Against everything, against everyone." />    
+  <meta property="og:image" content="https://www.sisifotoken.xyz/og.png" />
+  <meta property="og:url" content="https://www.sisifotoken.xyz/" />
+  <meta property="og:type" content="website" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="$SIFO" />
-<meta name="twitter:description" content="Against everything, against everyone." />
-<meta name="twitter:image" content="https://www.sisifotoken.xyz/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="$SIFO" />
+  <meta name="twitter:description" content="Against everything, against everyone." />
+  <meta name="twitter:image" content="https://www.sisifotoken.xyz/og.png" />
 
-<meta name="theme-color" content="#1c1e21" />
-
-<meta name="virtual-protocol-site-verification" content="3f7be207d0152af9b5579db049e0d0c9" />
+  <meta name="theme-color" content="#1c1e21" />
+  <meta name="virtual-protocol-site-verification" content="3f7be207d0152af9b5579db049e0d0c9" />
   
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
   
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<style>
-  :root{
-    --bg: #1c1e21;
-    --panel: #24262a;
-    --panel-2: #2c2e33;
-    --border: rgba(245,240,225,0.10);
-    --border-strong: rgba(245,240,225,0.18);
-    --rust: #c9873c;
-    --rust-dim: rgba(201,135,60,0.5);
-    --cream: #f5f0e1;
-    --cream-dim: rgba(245,240,225,0.58);
-  }
-
-  *{ box-sizing: border-box; margin: 0; padding: 0; }
-
-  html, body{
-    height: 100%;
-    background: var(--bg);
-    color: var(--cream);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-  }
-
-  a{ color: inherit; }
-
-  /* layout shell */
-  .shell{
-    display: flex;
-    min-height: 100dvh;
-  }
-
-  /* sidebar (desktop) */
-  .sidebar{
-    width: 288px;
-    flex-shrink: 0;
-    background: var(--panel);
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    padding: 1.6rem 1.2rem;
-    position: sticky;
-    top: 0;
-    height: 100dvh;
-  }
-
-  .brand{
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    margin-bottom: 2.2rem;
-  }
-
-  .brand img{
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  .brand-text{
-    font-family: 'Zilla Slab', serif;
-    font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: 0.02em;
-    color: var(--rust);
-  }
-
-  .nav-label{
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    margin: 0 0 0.6rem 0.2rem;
-  }
-
-  .nav-group{
-    margin-bottom: 1.8rem;
-  }
-
-  .nav-item{
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    width: 100%;
-    padding: 0.6rem 0.7rem;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    background: transparent;
-    color: var(--cream-dim);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 600;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    margin-bottom: 0.25rem;
-  }
-
-  .nav-item img{
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .nav-item:hover{
-    background: var(--panel-2);
-    color: var(--cream);
-  }
-
-  .nav-item.active{
-    background: rgba(201,135,60,0.12);
-    border-color: var(--rust-dim);
-    color: var(--cream);
-  }
-
-  .nav-item.active .nav-dot{
-    background: var(--rust);
-  }
-
-  .nav-dot{
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--cream-dim);
-    flex-shrink: 0;
-  }
-
-  .nav-icon-svg{
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.8;
-  }
-  
-  .nav-item img.nav-icon{
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .lang-toggle{
-    display: flex;
-    gap: 0.3rem;
-    margin-left: auto;
-  }
-
-  .lang-btn{
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    border: 1px solid var(--border-strong);
-    background: var(--panel-2);
-    color: var(--cream-dim);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .lang-btn:hover{ color: var(--cream); }
-
-  .lang-btn.active{
-    border-color: var(--rust-dim);
-    background: rgba(201,135,60,0.15);
-    color: var(--cream);
-  }
-
-  .sidebar-footer{
-    margin-top: auto;
-    display: flex;
-    gap: 0.7rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .sidebar-footer a img{
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    object-fit: cover;
-    opacity: 0.55;
-    filter: grayscale(1);
-    transition: all 0.2s ease;
-  }
-
-  .sidebar-footer a:hover img{
-    opacity: 1;
-    filter: grayscale(0);
-  }
-
-  .sidebar-footer a svg{
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    stroke: var(--cream-dim);
-    fill: none;
-    stroke-width: 1.8;
-    opacity: 0.55;
-    transition: all 0.2s ease;
-  }
-
-  .sidebar-footer a:hover svg{
-    opacity: 1;
-    stroke: var(--cream);
-  }
-  
-  /* mobile top bar */
-  .topbar{
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.2rem;
-    background: var(--panel);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 40;
-  }
-
-  .topbar .brand{ margin: 0; }
-
-  .hamburger{
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    border: 1px solid var(--border-strong);
-    background: var(--panel-2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    cursor: pointer;
-  }
-
-  .hamburger span{
-    width: 18px;
-    height: 2px;
-    background: var(--cream);
-    border-radius: 2px;
-  }
-
-  .overlay{
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 45;
-  }
-
-  .overlay.open{ display: block; }
-
-  /* main content */
-  .main{
-    flex: 1;
-    min-width: 0;
-    padding: 3rem 3.5rem;
-  }
-
-  .hero{
-    margin-bottom: 2.2rem;
-  }
-
-  .hero-eyebrow{
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--rust);
-    font-weight: 700;
-    margin-bottom: 0.6rem;
-  }
-
-  .hero h1{
-    font-family: 'Zilla Slab', serif;
-    font-weight: 700;
-    font-size: clamp(2.4rem, 4vw, 3.4rem);
-    letter-spacing: 0.01em;
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-  }
-
-  .hero p{
-    font-size: 1.05rem;
-    color: var(--cream-dim);
-    max-width: 46ch;
-  }
-
-  .lore-section{
-    max-width: 640px;
-    margin-top: 2.5rem;
-  }
-
-  .lore-chapter{
-    display: flex;
-    align-items: center;
-    gap: 1.8rem;
-    padding: 2rem 0;
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .lore-chapter.visible{
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .lore-chapter:nth-child(even){
-    flex-direction: row-reverse;
-    text-align: right;
-  }
-
-  .lore-chapter img{
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.45);
-  }
-
-  .lore-num{
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--rust);
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-  }
-
-  .lore-title{
-    font-family: 'Zilla Slab', serif;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-  }
-
-  .lore-quote{
-    font-style: italic;
-    color: var(--cream-dim);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .lore-body{
-    font-size: 0.88rem;
-    color: var(--cream-dim);
-    line-height: 1.55;
-  }
-
-  @media (max-width: 640px){
-    .lore-chapter,
-    .lore-chapter:nth-child(even){
-      flex-direction: column;
-      text-align: center;
+  <style>
+    :root{
+      --bg: #1c1e21;
+      --panel: #24262a;
+      --panel-2: #2c2e33;
+      --border: rgba(245,240,225,0.10);
+      --border-strong: rgba(245,240,225,0.18);
+      --rust: #c9873c;
+      --rust-dim: rgba(201,135,60,0.5);
+      --cream: #f5f0e1;
+      --cream-dim: rgba(245,240,225,0.58);
     }
-  }
 
-  .lore-chapter img{
-    cursor: zoom-in;
-  }
+    *{ box-sizing: border-box; margin: 0; padding: 0; }
 
-  .lightbox{
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10,11,13,0.92);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    cursor: zoom-out;
-  }
+    html, body{
+      height: 100%;
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
 
-  .lightbox.open{ display: flex; }
+    a{ color: inherit; }
 
-  .lightbox img{
-    max-width: min(80vw, 640px);
-    max-height: 85vh;
-    border-radius: 50%;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
-  }
-
-  .panel{
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.8rem;
-    max-width: 560px;
-  }
-
-  .panel-title{
-    font-family: 'Zilla Slab', serif;
-    font-weight: 700;
-    font-size: 1.15rem;
-    margin-bottom: 1.1rem;
-    color: var(--cream);
-  }
-
-  .info-row{
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.8rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .info-row:last-child{ border-bottom: none; }
-
-  .info-label{
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    white-space: nowrap;
-  }
-
-  .info-value{
-    font-family: 'DM Mono', monospace;
-    font-size: 0.9rem;
-    color: var(--cream);
-    text-align: right;
-    overflow-wrap: anywhere;
-  }
-
-  .info-value.pending{
-    color: var(--rust);
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-  }
-
-  .info-value.copyable{
-    cursor: pointer;
-    transition: color 0.15s ease;
-  }
-  .info-value.copyable:hover{
-    color: var(--rust);
-  }
-  .info-value.copyable.copied{
-    color: var(--rust);
-  }
-  
-  .buy-panel{
-    margin-top: 1rem;
-  }
-
-  .share-buttons{
-    display: flex;
-    gap: 0.7rem;
-    margin-top: 0.9rem;
-  }
-
-  .share-btn{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.9rem 0.6rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--panel-2);
-    text-decoration: none;
-    color: var(--cream-dim);
-    font-size: 0.78rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-  }
-
-  .share-btn:hover{
-    border-color: var(--rust-dim);
-    background: rgba(201,135,60,0.08);
-    color: var(--cream);
-  }
-
-  .share-btn img{
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  .buy-btn-disabled{
-    display: block;
-    text-align: center;
-    padding: 0.8rem;
-    border: 1px dashed var(--border-strong);
-    border-radius: 8px;
-    color: var(--cream-dim);
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
-
-  .section{ display: none; }
-  .section.active{ display: block; }
-
-  @media (max-width: 860px){
-    .sidebar{ display: none; }
-    .topbar{ display: flex; }
-
-    .sidebar.mobile-open{
+    /* layout shell */
+    .shell{
       display: flex;
-      position: fixed;
-      inset: 0 auto 0 0;
-      z-index: 50;
-      width: 300px;
-      box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+      min-height: 100dvh;
     }
 
-    .main{ padding: 2rem 1.3rem; }
-  }
+    /* sidebar (desktop) */
+    .sidebar{
+      width: 288px;
+      flex-shrink: 0;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 1.6rem 1.2rem;
+      position: sticky;
+      top: 0;
+      height: 100dvh;
+    }
 
-  .roadmap-phase{
-    border-bottom: 1px solid var(--border);
-    padding: 1.3rem 0;
-  }
-  .roadmap-phase:last-child{ border-bottom: none; }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 2.2rem;
+    }
 
-  .roadmap-status{
-    display: inline-block;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-  }
-  .status-done{ color: var(--rust); background: rgba(201,135,60,0.14); }
-  .status-active{ color: var(--cream); background: rgba(245,240,225,0.08); border: 1px solid var(--rust-dim); }
-  .status-pending{ color: var(--cream-dim); background: rgba(245,240,225,0.04); }
+    .brand img{
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-  .roadmap-title{
-    font-family: 'Zilla Slab', serif;
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-  }
-  .roadmap-body{
-    font-size: 0.88rem;
-    color: var(--cream-dim);
-    line-height: 1.6;
-    max-width: 54ch;
-  }
-  
-</style>
+    .brand-text{
+      font-family: 'Zilla Slab', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
+      color: var(--rust);
+    }
+
+    .nav-label{
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      margin: 0 0 0.6rem 0.2rem;
+    }
+
+    .nav-group{
+      margin-bottom: 1.8rem;
+    }
+
+    .nav-item{
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--cream-dim);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      margin-bottom: 0.25rem;
+    }
+
+    .nav-item img{
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .nav-item:hover{
+      background: var(--panel-2);
+      color: var(--cream);
+    }
+
+    .nav-item.active{
+      background: rgba(201,135,60,0.12);
+      border-color: var(--rust-dim);
+      color: var(--cream);
+    }
+
+    .nav-item.active .nav-dot{
+      background: var(--rust);
+    }
+
+    .nav-dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cream-dim);
+      flex-shrink: 0;
+    }
+
+    .nav-icon-svg{
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+    
+    .nav-item img.nav-icon{
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .lang-toggle{
+      display: flex;
+      gap: 0.3rem;
+      margin-left: auto;
+    }
+
+    .lang-btn{
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      border: 1px solid var(--border-strong);
+      background: var(--panel-2);
+      color: var(--cream-dim);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .lang-btn:hover{ color: var(--cream); }
+
+    .lang-btn.active{
+      border-color: var(--rust-dim);
+      background: rgba(201,135,60,0.15);
+      color: var(--cream);
+    }
+
+    .sidebar-footer{
+      margin-top: auto;
+      display: flex;
+      gap: 0.7rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .sidebar-footer a img{
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0.55;
+      filter: grayscale(1);
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-footer a:hover img{
+      opacity: 1;
+      filter: grayscale(0);
+    }
+
+    .sidebar-footer a svg{
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      stroke: var(--cream-dim);
+      fill: none;
+      stroke-width: 1.8;
+      opacity: 0.55;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-footer a:hover svg{
+      opacity: 1;
+      stroke: var(--cream);
+    }
+    
+    /* mobile top bar */
+    .topbar{
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.2rem;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .topbar .brand{ margin: 0; }
+
+    .hamburger{
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border-strong);
+      background: var(--panel-2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .hamburger span{
+      width: 18px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+    }
+
+    .overlay{
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 45;
+    }
+
+    .overlay.open{ display: block; }
+
+    /* main content */
+    .main{
+      flex: 1;
+      min-width: 0;
+      padding: 3rem 3.5rem;
+    }
+
+    .hero{
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-eyebrow{
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rust);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero h1{
+      font-family: 'Zilla Slab', serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      letter-spacing: 0.01em;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p{
+      font-size: 1.05rem;
+      color: var(--cream-dim);
+      max-width: 46ch;
+    }
+
+    .lore-section{
+      max-width: 640px;
+      margin-top: 2.5rem;
+    }
+
+    .lore-chapter{
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      padding: 2rem 0;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .lore-chapter.visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lore-chapter:nth-child(even){
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    .lore-chapter img{
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+    }
+
+    .lore-num{
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rust);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .lore-title{
+      font-family: 'Zilla Slab', serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .lore-quote{
+      font-style: italic;
+      color: var(--cream-dim);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .lore-body{
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 640px){
+      .lore-chapter,
+      .lore-chapter:nth-child(even){
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .lore-chapter img{
+      cursor: zoom-in;
+    }
+
+    .lightbox{
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,11,13,0.92);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+
+    .lightbox.open{ display: flex; }
+
+    .lightbox img{
+      max-width: min(80vw, 640px);
+      max-height: 85vh;
+      border-radius: 50%;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    }
+
+    .panel{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem;
+      max-width: 560px;
+    }
+
+    .panel-title{
+      font-family: 'Zilla Slab', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 1.1rem;
+      color: var(--cream);
+    }
+
+    .info-row{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row:last-child{ border-bottom: none; }
+
+    .info-label{
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      white-space: nowrap;
+    }
+
+    .info-value{
+      font-family: 'DM Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--cream);
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .info-value.pending{
+      color: var(--rust);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .info-value.copyable{
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+    .info-value.copyable:hover{
+      color: var(--rust);
+    }
+    .info-value.copyable.copied{
+      color: var(--rust);
+    }
+    
+    .buy-panel{
+      margin-top: 1rem;
+    }
+
+    .share-buttons{
+      display: flex;
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+    }
+
+    .share-btn{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--panel-2);
+      text-decoration: none;
+      color: var(--cream-dim);
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .share-btn:hover{
+      border-color: var(--rust-dim);
+      background: rgba(201,135,60,0.08);
+      color: var(--cream);
+    }
+
+    .share-btn img{
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .buy-btn-disabled{
+      display: block;
+      text-align: center;
+      padding: 0.8rem;
+      border: 1px dashed var(--border-strong);
+      border-radius: 8px;
+      color: var(--cream-dim);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .section{ display: none; }
+    .section.active{ display: block; }
+
+    @media (max-width: 860px){
+      .sidebar{ display: none; }
+      .topbar{ display: flex; }
+
+      .sidebar.mobile-open{
+        display: flex;
+        position: fixed;
+        inset: 0 auto 0 0;
+        z-index: 50;
+        width: 300px;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+      }
+
+      .main{ padding: 2rem 1.3rem; }
+    }
+
+    .roadmap-phase{
+      border-bottom: 1px solid var(--border);
+      padding: 1.3rem 0;
+    }
+    .roadmap-phase:last-child{ border-bottom: none; }
+
+    .roadmap-status{
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .status-done{ color: var(--rust); background: rgba(201,135,60,0.14); }
+    .status-active{ color: var(--cream); background: rgba(245,240,225,0.08); border: 1px solid var(--rust-dim); }
+    .status-pending{ color: var(--cream-dim); background: rgba(245,240,225,0.04); }
+
+    .roadmap-title{
+      font-family: 'Zilla Slab', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .roadmap-body{
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      line-height: 1.6;
+      max-width: 54ch;
+    }
+  </style>
 </head>
 <body>
 
@@ -643,7 +641,7 @@
         </button>
       </div>
 
-    <div class="sidebar-footer">
+      <div class="sidebar-footer">
         <a href="https://x.com/sisifotoken" target="_blank" rel="noopener noreferrer"><img src="/x.png" alt="X" /></a>
         <a href="https://farcaster.xyz/sisifotoken" target="_blank" rel="noopener noreferrer"><img src="/farcaster.png" alt="Farcaster" /></a>
         <a href="https://discord.gg/MfSUnVXaP8" target="_blank" rel="noopener noreferrer"><img src="/discord.png" alt="Discord" /></a>
@@ -664,6 +662,7 @@
         <p data-en="Against everything, against everyone." data-es="Contra todo, contra todos.">Against everything, against everyone.</p>
       </div>
 
+      <!-- HOME -->
       <section class="section active" id="section-home">
         <div class="lore-section">
           <div class="lore-chapter">
@@ -720,7 +719,8 @@
         </div>
       </section>
 
-    <section class="section" id="section-base">
+      <!-- BASE -->
+      <section class="section" id="section-base">
         <div class="panel">
           <p class="panel-title">Base</p>
           <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Base</span></div>
@@ -737,7 +737,8 @@
         </div>
       </section>
 
-<section class="section" id="section-solana">
+      <!-- SOLANA -->
+      <section class="section" id="section-solana">
         <div class="panel">
           <p class="panel-title">Solana</p>
           <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Solana</span></div>
@@ -754,7 +755,8 @@
         </div>
       </section>
 
-    <section class="section" id="section-hood">
+      <!-- ROBINHOOD -->
+      <section class="section" id="section-hood">
         <div class="panel">
           <p class="panel-title">Robinhood</p>
           <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Robinhood</span></div>
@@ -771,7 +773,8 @@
         </div>
       </section>
 
-    <section class="section" id="section-roadmap">
+      <!-- ROADMAP -->
+      <section class="section" id="section-roadmap">
         <div class="panel" style="max-width:620px;">
           <p class="panel-title" data-en="Roadmap" data-es="Hoja de ruta">Roadmap</p>
           <p style="color:var(--cream-dim); font-size:0.85rem; margin-bottom:1.3rem;" data-en="The stone doesn't stop. Neither does the plan." data-es="La piedra no se detiene. Tampoco el plan.">The stone doesn't stop. Neither does the plan.</p>
@@ -802,12 +805,12 @@
         </div>
       </section>
 
+      <!-- SHARE -->
       <section class="section" id="section-share">
         <div class="panel">
           <p class="panel-title" data-en="Share" data-es="Compartir">Share</p>
           <p style="color:var(--cream-dim); font-size:0.85rem; line-height:1.55;" data-en="Tell them the rock always returns." data-es="Diles que la roca siempre vuelve.">Tell them the rock always returns.</p>
           <div class="share-buttons">
-            <!-- Botones existentes -->
             <a class="share-btn" href="https://twitter.com/intent/tweet?text=%24SIFO&url=https%3A%2F%2Fsisifotoken.xyz%2F" target="_blank" rel="noopener noreferrer">
               <img src="/x.png" alt="X" /> X
             </a>
@@ -821,47 +824,85 @@
         </div>
       </section>
 
-<section class="section" id="section-mail">
-  <div class="panel" style="max-width: 560px;">
-    <p class="panel-title" data-en="Join the list" data-es="Únete a la lista">Join the list</p>
-    <p style="color:var(--cream-dim); font-size:0.9rem; line-height:1.6; margin-bottom: 1.2rem;" data-en="Get updates when the rock moves." data-es="Recibe avisos cuando la roca se mueva.">Get updates when the rock moves.</p>
+      <!-- MAIL (FORMULARIO BREVO) -->
+      <section class="section" id="section-mail">
+        <div class="panel" style="max-width: 560px; background-color: #1c1e21; border-color: var(--border);">
+          <p class="panel-title" data-en="Join the list" data-es="Únete a la lista">Join the list</p>
+          <p style="color:var(--cream-dim); font-size:0.9rem; line-height:1.6; margin-bottom: 1.2rem;" data-en="Get updates when the rock moves." data-es="Recibe avisos cuando la roca se mueva.">Get updates when the rock moves.</p>
 
-    <!-- Estado 1: Formulario (por defecto) -->
-    <div id="mail-form">
-      <form id="brevo-form">
-        <div style="margin-bottom: 1rem;">
-          <label style="display:block; font-size:0.8rem; color:var(--cream-dim); margin-bottom:0.3rem;">Email *</label>
-          <input type="email" name="email" required style="width:100%; padding:0.7rem; background:var(--panel-2); border:1px solid var(--border); border-radius:6px; color:var(--cream); font-family:'Inter',sans-serif;" />
+          <!-- FORMULARIO BREVO -->
+          <div class="sib-form" style="text-align: center; background-color: transparent;">
+            <div id="sib-form-container" class="sib-form-container">
+              <div id="error-message" class="sib-form-message-panel" style="font-family: 'Inter', sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px; max-width:540px;">
+                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                  <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+                    <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+                  </svg>
+                  <span class="sib-form-message-panel__inner-text">No hemos podido validar tu suscripción.</span>
+                </div>
+              </div>
+              <div></div>
+              <div id="success-message" class="sib-form-message-panel" style="font-family: 'Inter', sans-serif; font-size:16px; text-align:left; color:#085229; background-color:#e7faf0; border-color:#13ce66; border-radius:3px; max-width:540px;">
+                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                  <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+                    <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+                  </svg>
+                  <span class="sib-form-message-panel__inner-text">Se ha realizado tu suscripción.</span>
+                </div>
+              </div>
+              <div></div>
+              <div id="sib-container" class="sib-container--large sib-container--vertical" style="max-width:540px; text-align:center; background-color:transparent; border-width:0px; direction:ltr">
+                <form id="sib-form" method="POST" action="https://53d630ad.sibforms.com/serve/MUIFAON632w0VBRWhFt9bUiUuF_96mTy0e1FeDIOJGFXNK8rNIYuVksFSv7jQjYW9cF7qoCf0Xcaldvfsa3_vthTlLqovRl2krNCnpVqEE17YfziWx7PAR62-wucBAC23ld4-Amcf4ysGtb3sVkSuezCXx4RC1t5DDrNJTqJwYUAUC2K4MZY246nudaPmo0ooNMJGxxgKwcxgvmr9g==" data-type="subscription">
+                  <div style="padding: 8px 0;">
+                    <div class="sib-form-block" style="font-family: 'Zilla Slab', serif; font-size:24px; font-weight:700; text-align:left; color: var(--rust); background-color:transparent; text-align:left">
+                      <p>Newsletter</p>
+                    </div>
+                  </div>
+                  <div style="padding: 8px 0;">
+                    <div class="sib-form-block" style="font-family: 'Inter', sans-serif; font-size:16px; text-align:left; color: var(--cream-dim); background-color:transparent; text-align:left">
+                      <div class="sib-text-form-block">
+                        <p>Suscríbete a nuestra newsletter para recibir nuestras novedades.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding: 8px 0;">
+                    <div class="sib-input sib-form-block">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row ">
+                          <label class="entry__label" style="font-weight: 600; text-align: left; font-family: 'Inter', sans-serif; font-size:14px; font-weight:600; text-align:left; color: var(--cream);" for="EMAIL" data-required="*">Introduce tu dirección de e-mail para suscribirte</label>
+                          <div class="entry__field">
+                            <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="EMAIL" data-required="true" required style="background: var(--panel-2); border: 1px solid var(--border); border-radius: 6px; color: var(--cream); font-family: 'Inter', sans-serif;" />
+                          </div>
+                        </div>
+                        <label class="entry__error entry__error--primary" style="font-family: 'Inter', sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;">
+                        </label>
+                        <label class="entry__specification" style="font-family: 'Inter', sans-serif; font-size:12px; text-align:left; color: var(--cream-dim); text-align: left">
+                          Introduce tu dirección de e-mail para suscribirte. Ej.: abc@xyz.com
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding: 8px 0;">
+                    <div class="sib-form-block" style="text-align: left">
+                      <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-family: 'Inter', sans-serif; font-size:16px; font-weight:700; text-align:center; color:#1c1e21; background-color: var(--rust); border-width:0px; border-radius:6px; padding: 0.8rem 2rem; width: 100%; cursor: pointer;" form="sib-form" type="submit">
+                        <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                          <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                        </svg>
+                        SUSCRIBIRSE
+                      </button>
+                    </div>
+                  </div>
+                  <input type="text" name="email_address_check" value="" class="input--hidden">
+                  <input type="hidden" name="locale" value="es">
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- FIN FORMULARIO BREVO -->
+
         </div>
-        <div style="margin-bottom: 1.2rem;">
-          <label style="display:block; font-size:0.8rem; color:var(--cream-dim); margin-bottom:0.3rem;">Nombre</label>
-          <input type="text" name="attributes.NOMBRE" style="width:100%; padding:0.7rem; background:var(--panel-2); border:1px solid var(--border); border-radius:6px; color:var(--cream); font-family:'Inter',sans-serif;" />
-        </div>
-        <button type="submit" style="background:var(--rust); color:#1c1e21; border:none; padding:0.8rem 2rem; border-radius:6px; font-weight:700; cursor:pointer; width:100%; font-size:1rem;">Suscribirse</button>
-      </form>
-    </div>
+      </section>
 
-    <!-- Estado 2: Confirmación (envío) -->
-    <div id="mail-confirm" style="display:none; text-align:center; padding:2rem 0;">
-      <p style="font-size:1.5rem;">📬</p>
-      <h3 style="font-family:'Zilla Slab',serif; color:var(--rust);">Revisa tu correo</h3>
-      <p style="color:var(--cream-dim);">Te hemos enviado un enlace de confirmación.</p>
-      <p style="color:var(--cream-dim); font-size:0.85rem;">Haz clic en él para activar tu suscripción.</p>
-    </div>
-
-    <!-- Estado 3: Confirmado (clic) -->
-    <div id="mail-done" style="display:none; text-align:center; padding:2rem 0;">
-      <p style="font-size:1.5rem;">✅</p>
-      <h3 style="font-family:'Zilla Slab',serif; color:var(--rust);">¡Ya formas parte de $SIFO!</h3>
-      <p style="color:var(--cream-dim);">La roca no se detiene. Y tú tampoco.</p>
-      <p style="color:var(--cream-dim); font-size:0.85rem;">Recibirás avisos cuando la piedra se mueva.</p>
-    </div>
-  </div>
-</section>
-
-
-      
-      
     </main>
   </div>
 
@@ -869,158 +910,75 @@
     <img id="lightboxImg" src="" alt="" />
   </div>
 
-<script>
-  function setLang(lang){
-    document.querySelectorAll('[data-en]').forEach(el => {
-      el.textContent = lang === 'es' ? el.dataset.es : el.dataset.en;
-    });
-    document.getElementById('langBtnEn').classList.toggle('active', lang === 'en');
-    document.getElementById('langBtnEs').classList.toggle('active', lang === 'es');
-    document.documentElement.lang = lang;
-  }
+  <script>
+    function setLang(lang){
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = lang === 'es' ? el.dataset.es : el.dataset.en;
+      });
+      document.getElementById('langBtnEn').classList.toggle('active', lang === 'en');
+      document.getElementById('langBtnEs').classList.toggle('active', lang === 'es');
+      document.documentElement.lang = lang;
+    }
 
-  const browserLang = (navigator.language || 'en').toLowerCase();
-  const initialLang = browserLang.startsWith('es') ? 'es' : 'en';
-  setLang(initialLang);
+    const browserLang = (navigator.language || 'en').toLowerCase();
+    const initialLang = browserLang.startsWith('es') ? 'es' : 'en';
+    setLang(initialLang);
 
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('overlay');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
 
-  function openMobileNav(){
-    sidebar.classList.add('mobile-open');
-    overlay.classList.add('open');
-  }
-  function closeMobileNav(){
-    sidebar.classList.remove('mobile-open');
-    overlay.classList.remove('open');
-  }
+    function openMobileNav(){
+      sidebar.classList.add('mobile-open');
+      overlay.classList.add('open');
+    }
+    function closeMobileNav(){
+      sidebar.classList.remove('mobile-open');
+      overlay.classList.remove('open');
+    }
 
-  hamburgerBtn.addEventListener('click', openMobileNav);
-  overlay.addEventListener('click', closeMobileNav);
+    hamburgerBtn.addEventListener('click', openMobileNav);
+    overlay.addEventListener('click', closeMobileNav);
 
-  function switchSection(id, btn){
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.getElementById('section-' + id).classList.add('active');
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    btn.classList.add('active');
-    closeMobileNav();
-  }
+    function switchSection(id, btn){
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById('section-' + id).classList.add('active');
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      btn.classList.add('active');
+      closeMobileNav();
+    }
 
-  const loreObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
+    const loreObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
 
-  document.querySelectorAll('.lore-chapter').forEach(ch => loreObserver.observe(ch));
+    document.querySelectorAll('.lore-chapter').forEach(ch => loreObserver.observe(ch));
 
-  function openLightbox(src){
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightbox').classList.add('open');
-  }
-  function closeLightbox(){
-    document.getElementById('lightbox').classList.remove('open');
-  }
+    function openLightbox(src){
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox(){
+      document.getElementById('lightbox').classList.remove('open');
+    }
 
-  document.querySelectorAll('.info-value.copyable').forEach(el => {
-    const original = el.textContent;
-    el.addEventListener('click', () => {
-      navigator.clipboard.writeText(original).then(() => {
-        el.textContent = 'Copied!';
-        el.classList.add('copied');
-        setTimeout(() => {
-          el.textContent = original;
-          el.classList.remove('copied');
-        }, 1200);
+    document.querySelectorAll('.info-value.copyable').forEach(el => {
+      const original = el.textContent;
+      el.addEventListener('click', () => {
+        navigator.clipboard.writeText(original).then(() => {
+          el.textContent = 'Copied!';
+          el.classList.add('copied');
+          setTimeout(() => {
+            el.textContent = original;
+            el.classList.remove('copied');
+          }, 1200);
+        });
       });
     });
-  });
-
-// Control de estados de la lista de correo
-const urlParams = new URLSearchParams(window.location.search);
-const confirmStatus = urlParams.get('confirm');
-
-const mailForm = document.getElementById('mail-form');
-const mailConfirm = document.getElementById('mail-confirm');
-const mailDone = document.getElementById('mail-done');
-
-if (confirmStatus === 'sent') {
-  mailForm.style.display = 'none';
-  mailConfirm.style.display = 'block';
-} else if (confirmStatus === 'done') {
-  mailForm.style.display = 'none';
-  mailDone.style.display = 'block';
-} else {
-  mailForm.style.display = 'block';
-  mailConfirm.style.display = 'none';
-  mailDone.style.display = 'none';
-}
-
-// Manejo del envío del formulario a través de la API de Vercel
-document.getElementById('brevo-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  console.log('Formulario enviado'); // Para ver si se ejecuta
-
-  const formData = new FormData(this);
-  const email = formData.get('email');
-  const name = formData.get('attributes.NOMBRE');
-
-  const submitBtn = this.querySelector('button[type="submit"]');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Enviando...';
-  submitBtn.disabled = true;
-
-  try {
-    const response = await fetch('/api/subscribe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, name }),
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-      // Éxito: muestra la página de confirmación (estado "sent")
-      window.location.href = window.location.pathname + '?confirm=sent';
-    } else {
-      alert(result.message || 'Error al suscribirte. Inténtalo de nuevo.');
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    }
-  } catch (error) {
-    alert('Error de conexión. Inténtalo más tarde.');
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  }
-});
-
-  // Control de estados de la lista de correo (para que funcione al cargar la página)
-window.onload = function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const confirmStatus = urlParams.get('confirm');
-
-  const mailForm = document.getElementById('mail-form');
-  const mailConfirm = document.getElementById('mail-confirm');
-  const mailDone = document.getElementById('mail-done');
-
-  if (confirmStatus === 'sent') {
-    mailForm.style.display = 'none';
-    mailConfirm.style.display = 'block';
-  } else if (confirmStatus === 'done') {
-    mailForm.style.display = 'none';
-    mailDone.style.display = 'block';
-  } else {
-    mailForm.style.display = 'block';
-    mailConfirm.style.display = 'none';
-    mailDone.style.display = 'none';
-  }
-};
-  
-</script>
+  </script>
 </body>
 </html>
