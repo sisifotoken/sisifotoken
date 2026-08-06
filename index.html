@@ -962,6 +962,7 @@ if (confirmStatus === 'sent') {
 // Manejo del envío del formulario a través de la API de Vercel
 document.getElementById('brevo-form').addEventListener('submit', async function(e) {
   e.preventDefault();
+  console.log('Formulario enviado'); // Para ver si se ejecuta
 
   const formData = new FormData(this);
   const email = formData.get('email');
