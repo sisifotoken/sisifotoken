@@ -826,56 +826,36 @@
 
       <!-- MAIL (FORMULARIO BREVO) -->
      <section class="section" id="section-mail">
-  <div class="panel" style="max-width: 560px; background-color: #1c1e21; border-color: var(--border);">
-    <!-- COMIENZO DEL CÓDIGO DE BREVO -->
-    <div class="sib-form" style="text-align: center; background-color: transparent;">
-      <div id="sib-form-container" class="sib-form-container">
-        <div id="sib-container" style="max-width:540px; text-align:center; background-color:transparent; border-width:0px; direction:ltr">
-          <form id="sib-form" method="POST" action="https://53d630ad.sibforms.com/serve/MUIFAON632w0VBRWhFt9bUiUuF_96mTy0e1FeDIOJGFXNK8rNIYuVksFSv7jQjYW9cF7qoCf0Xcaldvfsa3_vthTlLqovRl2krNCnpVqEE17YfziWx7PAR62-wucBAC23ld4-Amcf4ysGtb3sVkSuezCXx4RC1t5DDrNJTqJwYUAUC2K4MZY246nudaPmo0ooNMJGxxgKwcxgvmr9g==" data-type="subscription">
-            <div style="padding: 8px 0;">
-              <div class="sib-form-block" style="font-family: 'Zilla Slab', serif; font-size:24px; font-weight:700; text-align:left; color: var(--rust); background-color:transparent; text-align:left">
-                <p>Newsletter</p>
-              </div>
-            </div>
-            <div style="padding: 8px 0;">
-              <div class="sib-form-block" style="font-family: 'Inter', sans-serif; font-size:16px; text-align:left; color: var(--cream-dim); background-color:transparent; text-align:left">
-                <div class="sib-text-form-block">
-                  <p>Suscríbete a nuestra newsletter para recibir nuestras novedades.</p>
-                </div>
-              </div>
-            </div>
-            <div style="padding: 8px 0;">
-              <div class="sib-input sib-form-block">
-                <div class="form__entry entry_block">
-                  <div class="form__label-row ">
-                    <label class="entry__label" style="font-weight: 600; text-align: left; font-family: 'Inter', sans-serif; font-size:14px; font-weight:600; text-align:left; color: var(--cream);" for="EMAIL" data-required="*">Introduce tu dirección de e-mail para suscribirte</label>
-                    <div class="entry__field">
-                      <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="EMAIL" data-required="true" required style="background: var(--panel-2); border: 1px solid var(--border); border-radius: 6px; color: var(--cream); font-family: 'Inter', sans-serif;" />
-                    </div>
-                  </div>
-                  <label class="entry__specification" style="font-family: 'Inter', sans-serif; font-size:12px; text-align:left; color: var(--cream-dim); text-align: left">
-                    Introduce tu dirección de e-mail para suscribirte. Ej.: abc@xyz.com
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div style="padding: 8px 0;">
-              <div class="sib-form-block" style="text-align: left">
-                <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-family: 'Inter', sans-serif; font-size:16px; font-weight:700; text-align:center; color:#1c1e21; background-color: var(--rust); border-width:0px; border-radius:6px; padding: 0.8rem 2rem; width: 100%; cursor: pointer;" form="sib-form" type="submit">
-                  <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
-                    <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
-                  </svg>
-                  SUSCRIBIRSE
-                </button>
-              </div>
-            </div>
-            <input type="text" name="email_address_check" value="" class="input--hidden">
-            <input type="hidden" name="locale" value="es">
-          </form>
+  <div class="panel" style="max-width: 560px;">
+    <p class="panel-title" data-en="Join the list" data-es="Únete a la lista">Join the list</p>
+    <p style="color:var(--cream-dim); font-size:0.9rem; line-height:1.6; margin-bottom: 1.2rem;" data-en="Get updates when the rock moves." data-es="Recibe avisos cuando la roca se mueva.">Get updates when the rock moves.</p>
+
+    <div id="mail-form">
+      <form id="brevo-form" action="https://53d630ad.sibforms.com/serve/MUIFAON632w0VBRWhFt9bUiUuF_96mTy0e1FeDIOJGFXNK8rNIYuVksFSv7jQjYW9cF7qoCf0Xcaldvfsa3_vthTlLqovRl2krNCnpVqEE17YfziWx7PAR62-wucBAC23ld4-Amcf4ysGtb3sVkSuezCXx4RC1t5DDrNJTqJwYUAUC2K4MZY246nudaPmo0ooNMJGxxgKwcxgvmr9g==" method="POST">
+        
+        <div style="margin-bottom: 1.2rem;">
+          <label for="EMAIL" style="display:block; font-size:0.8rem; color:var(--cream-dim); margin-bottom:0.3rem;" data-en="Email *" data-es="Correo electrónico *">Email *</label>
+          <input type="email" id="EMAIL" name="EMAIL" required placeholder="abc@xyz.com" style="width:100%; padding:0.7rem; background:var(--panel-2); border:1px solid var(--border); border-radius:6px; color:var(--cream); font-family:'Inter',sans-serif; outline:none;" />
         </div>
-      </div>
+
+        <input type="text" name="email_address_check" value="" style="display:none !important;" tabIndex="-1" autocomplete="off" />
+        <input type="hidden" name="locale" value="es" />
+
+        <button type="submit" style="background:var(--rust); color:#1c1e21; border:none; padding:0.8rem 2rem; border-radius:6px; font-weight:700; cursor:pointer; width:100%; font-size:1rem; font-family:'Inter',sans-serif; transition: opacity 0.2s ease;" data-en="Subscribe" data-es="Suscribirse">Subscribe</button>
+      </form>
     </div>
-    <!-- FIN DEL CÓDIGO DE BREVO -->
+
+    <div id="mail-confirm" style="display:none; text-align:center; padding:2rem 0;">
+      <p style="font-size:1.5rem;">📬</p>
+      <h3 style="font-family:'Zilla Slab',serif; color:var(--rust);" data-en="Check your email" data-es="Revisa tu correo">Check your email</h3>
+      <p style="color:var(--cream-dim);" data-en="We have sent you a confirmation link." data-es="Te hemos enviado un enlace de confirmación.">We have sent you a confirmation link.</p>
+    </div>
+
+    <div id="mail-done" style="display:none; text-align:center; padding:2rem 0;">
+      <p style="font-size:1.5rem;">✅</p>
+      <h3 style="font-family:'Zilla Slab',serif; color:var(--rust);" data-en="You are part of $SIFO!" data-es="¡Ya formas parte de $SIFO!">You are part of $SIFO!</h3>
+      <p style="color:var(--cream-dim);" data-en="The rock doesn't stop. Neither do you." data-es="La roca no se detiene. Y tú tampoco.">The rock doesn't stop. Neither do you.</p>
+    </div>
   </div>
 </section>
 
@@ -955,6 +935,35 @@
         });
       });
     });
+
+    // Control de visualización por parámetros URL (?confirm=sent o ?confirm=done)
+function checkMailStatus() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const confirmStatus = urlParams.get('confirm');
+
+  const mailForm = document.getElementById('mail-form');
+  const mailConfirm = document.getElementById('mail-confirm');
+  const mailDone = document.getElementById('mail-done');
+
+  if (!mailForm || !mailConfirm || !mailDone) return;
+
+  if (confirmStatus === 'sent') {
+    mailForm.style.display = 'none';
+    mailConfirm.style.display = 'block';
+    mailDone.style.display = 'none';
+  } else if (confirmStatus === 'done') {
+    mailForm.style.display = 'none';
+    mailConfirm.style.display = 'none';
+    mailDone.style.display = 'block';
+  } else {
+    mailForm.style.display = 'block';
+    mailConfirm.style.display = 'none';
+    mailDone.style.display = 'none';
+  }
+}
+
+// Ejecutar al cargar la página sin machacar el resto del sitio
+document.addEventListener('DOMContentLoaded', checkMailStatus);
   </script>
 </body>
 </html>
