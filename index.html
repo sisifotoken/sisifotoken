@@ -832,16 +832,15 @@
 
     <div id="mail-form">
       <form id="brevo-form" action="https://53d630ad.sibforms.com/serve/MUIFAON632w0VBRWhFt9bUiUuF_96mTy0e1FeDIOJGFXNK8rNIYuVksFSv7jQjYW9cF7qoCf0Xcaldvfsa3_vthTlLqovRl2krNCnpVqEE17YfziWx7PAR62-wucBAC23ld4-Amcf4ysGtb3sVkSuezCXx4RC1t5DDrNJTqJwYUAUC2K4MZY246nudaPmo0ooNMJGxxgKwcxgvmr9g==" method="POST">
-        
         <div style="margin-bottom: 1.2rem;">
           <label for="EMAIL" style="display:block; font-size:0.8rem; color:var(--cream-dim); margin-bottom:0.3rem;" data-en="Email *" data-es="Correo electrónico *">Email *</label>
           <input type="email" id="EMAIL" name="EMAIL" required placeholder="abc@xyz.com" style="width:100%; padding:0.7rem; background:var(--panel-2); border:1px solid var(--border); border-radius:6px; color:var(--cream); font-family:'Inter',sans-serif; outline:none;" />
         </div>
 
         <input type="text" name="email_address_check" value="" style="display:none !important;" tabIndex="-1" autocomplete="off" />
-        <input type="hidden" name="locale" value="es" />
+        <input type="hidden" id="brevo-locale" name="locale" value="es" />
 
-        <button type="submit" style="background:var(--rust); color:#1c1e21; border:none; padding:0.8rem 2rem; border-radius:6px; font-weight:700; cursor:pointer; width:100%; font-size:1rem; font-family:'Inter',sans-serif; transition: opacity 0.2s ease;" data-en="Subscribe" data-es="Suscribirse">Subscribe</button>
+        <button type="submit" style="background:var(--rust); color:#1c1e21; border:none; padding:0.8rem 2rem; border-radius:6px; font-weight:700; cursor:pointer; width:100%; font-size:1rem; font-family:'Inter',sans-serif;" data-en="Subscribe" data-es="Suscribirse">Subscribe</button>
       </form>
     </div>
 
@@ -867,6 +866,7 @@
   </div>
 
   <script>
+    // Actualización del idioma también en el input oculto de Brevo
     function setLang(lang){
       document.querySelectorAll('[data-en]').forEach(el => {
         el.textContent = lang === 'es' ? el.dataset.es : el.dataset.en;
@@ -874,6 +874,10 @@
       document.getElementById('langBtnEn').classList.toggle('active', lang === 'en');
       document.getElementById('langBtnEs').classList.toggle('active', lang === 'es');
       document.documentElement.lang = lang;
+      
+      // Sincroniza el idioma con el formulario de Brevo
+      const brevoLocale = document.getElementById('brevo-locale');
+      if(brevoLocale) brevoLocale.value = lang;
     }
 
     const browserLang = (navigator.language || 'en').toLowerCase();
@@ -936,7 +940,8 @@
       });
     });
 
-    // Control de visualización por parámetros URL (?confirm=sent o ?confirm=done)
+   
+// Control inteligente de estados según la URL (?confirm=sent o ?confirm=done)
 function checkMailStatus() {
   const urlParams = new URLSearchParams(window.location.search);
   const confirmStatus = urlParams.get('confirm');
@@ -947,10 +952,8 @@ function checkMailStatus() {
 
   if (!mailForm || !mailConfirm || !mailDone) return;
 
-  // Si viene algún parámetro de confirmación ('sent' o 'done')
   if (confirmStatus === 'sent' || confirmStatus === 'done') {
-    
-    // 1. Mostrar el estado correspondiente dentro del panel
+    // 1. Mostrar estado del formulario
     if (confirmStatus === 'sent') {
       mailForm.style.display = 'none';
       mailConfirm.style.display = 'block';
@@ -961,27 +964,23 @@ function checkMailStatus() {
       mailDone.style.display = 'block';
     }
 
-    // 2. CAMBIAR LA SECCIÓN VISIBLE A 'MAIL' AUTOMÁTICAMENTE
-    // Desactivamos la sección activa (Home) y activamos la de Mail
+    // 2. Abrir la pestaña 'Mail' directamente en lugar de quedarle en 'Home'
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById('section-mail').classList.add('active');
 
-    // Actualizamos la pestaña activa en la barra lateral/menú
     const mailBtn = document.querySelector('.nav-item[data-target="mail"]');
     if (mailBtn) {
       document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
       mailBtn.classList.add('active');
     }
-
   } else {
-    // Estado normal sin parámetros
     mailForm.style.display = 'block';
     mailConfirm.style.display = 'none';
     mailDone.style.display = 'none';
   }
 }
 
-// Ejecutar cuando el DOM esté listo
+// Se ejecuta al cargar la página
 document.addEventListener('DOMContentLoaded', checkMailStatus);
     
   </script>
