@@ -1,39 +1,38 @@
 // /api/subscribe.js
 
 export default async function handler(req, res) {
-  // Configuración CORS para que funcione desde tu web
+  // Configuración CORS
   res.setHeader('Access-Control-Allow-Origin', 'https://www.sisifotoken.xyz');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Responder a las peticiones OPTIONS (pre-vuelo de CORS)
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  // Solo aceptamos POST
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Método no permitido' });
   }
 
-  // Obtener los datos del cuerpo de la petición
   const { email, name } = req.body;
 
-  // Validar el email
   if (!email || !email.includes('@')) {
     return res.status(400).json({ message: 'Email inválido' });
   }
 
-  // Leer las variables de entorno de Vercel
+  // Leer variables de entorno
   const API_KEY = process.env.BREVO_API_KEY;
-  const LIST_ID = parseInt(process.env.BREVO_LIST_ID, 10);
+  const LIST_ID = process.env.BREVO_LIST_ID;
+
+  // **IMPORTANTE: Log para ver si las variables se cargan**
+  console.log('API_KEY cargada:', !!API_KEY); // true/false
+  console.log('LIST_ID cargada:', LIST_ID);
 
   if (!API_KEY || !LIST_ID) {
     console.error('Faltan variables de entorno: BREVO_API_KEY o BREVO_LIST_ID');
-    return res.status(500).json({ message: 'Error de configuración del servidor' });
+    return res.status(500).json({ message: 'Error de configuración del servidor: faltan variables de entorno' });
   }
 
-  // Llamar a la API de Brevo para añadir el contacto
   try {
     const response = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
@@ -46,7 +45,7 @@ export default async function handler(req, res) {
         attributes: {
           NOMBRE: name || '',
         },
-        listIds: [LIST_ID],
+        listIds: [parseInt(LIST_ID, 10)],
         updateEnabled: true,
       }),
     });
@@ -54,6 +53,7 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
+      // Si el error es que el contacto ya existe, lo tratamos como éxito
       if (response.status === 400 && data.message?.includes('already exists')) {
         return res.status(200).json({
           message: 'Ya estás en la lista. Recibirás nuestras novedades.',
@@ -73,9 +73,9 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Error interno:', error);
+    console.error('Error interno en la función:', error);
     return res.status(500).json({
-      message: 'Error interno del servidor. Inténtalo más tarde.'
+      message: `Error interno del servidor: ${error.message}`,
     });
   }
 }
