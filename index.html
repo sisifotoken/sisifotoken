@@ -981,7 +981,20 @@ function checkMailStatus() {
 }
 
 // Se ejecuta al cargar la página
-document.addEventListener('DOMContentLoaded', checkMailStatus);
+document.addEventListener('DOMContentLoaded', () => {
+  const brevoForm = document.getElementById('brevo-form');
+  if (brevoForm) {
+    brevoForm.addEventListener('submit', () => {
+      // Le da un momento a Brevo para procesar el POST y redirige localmente a ?confirm=sent
+      setTimeout(() => {
+        window.location.href = window.location.pathname + '?confirm=sent';
+      }, 300);
+    });
+  }
+
+  // Comprueba los parámetros de la URL (?confirm=sent o ?confirm=done)
+  checkMailStatus();
+});
     
   </script>
 </body>
