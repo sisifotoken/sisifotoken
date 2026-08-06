@@ -638,6 +638,9 @@
         <button class="nav-item" data-target="share" onclick="switchSection('share', this)">
           <svg class="nav-icon-svg" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><line x1="8.2" y1="10.8" x2="15.8" y2="7.2"/><line x1="8.2" y1="13.2" x2="15.8" y2="16.8"/></svg> <span data-en="Share" data-es="Compartir">Share</span>
         </button>
+        <button class="nav-item" data-target="mail" onclick="switchSection('mail', this)">
+          <svg class="nav-icon-svg" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 4l8 6 8-6"/></svg> <span data-en="Mail" data-es="Correo">Mail</span>
+        </button>
       </div>
 
     <div class="sidebar-footer">
@@ -818,6 +821,47 @@
         </div>
       </section>
 
+<section class="section" id="section-mail">
+  <div class="panel" style="max-width: 560px;">
+    <p class="panel-title" data-en="Join the list" data-es="Únete a la lista">Join the list</p>
+    <p style="color:var(--cream-dim); font-size:0.9rem; line-height:1.6; margin-bottom: 1.2rem;" data-en="Get updates when the rock moves." data-es="Recibe avisos cuando la roca se mueva.">Get updates when the rock moves.</p>
+
+    <!-- Estado 1: Formulario (por defecto) -->
+    <div id="mail-form">
+      <form id="brevo-form" action="https://api.brevo.com/v3/contacts" method="POST">
+        <input type="hidden" name="listIds" value="[TU_LISTA_ID]" />
+        <div style="margin-bottom: 1rem;">
+          <label style="display:block; font-size:0.8rem; color:var(--cream-dim); margin-bottom:0.3rem;">Email *</label>
+          <input type="email" name="email" required style="width:100%; padding:0.7rem; background:var(--panel-2); border:1px solid var(--border); border-radius:6px; color:var(--cream); font-family:'Inter',sans-serif;" />
+        </div>
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display:block; font-size:0.8rem; color:var(--cream-dim); margin-bottom:0.3rem;">Nombre</label>
+          <input type="text" name="attributes.NOMBRE" style="width:100%; padding:0.7rem; background:var(--panel-2); border:1px solid var(--border); border-radius:6px; color:var(--cream); font-family:'Inter',sans-serif;" />
+        </div>
+        <button type="submit" style="background:var(--rust); color:#1c1e21; border:none; padding:0.8rem 2rem; border-radius:6px; font-weight:700; cursor:pointer; width:100%; font-size:1rem;">Suscribirse</button>
+      </form>
+    </div>
+
+    <!-- Estado 2: Confirmación (envío) -->
+    <div id="mail-confirm" style="display:none; text-align:center; padding:2rem 0;">
+      <p style="font-size:1.5rem;">📬</p>
+      <h3 style="font-family:'Zilla Slab',serif; color:var(--rust);">Revisa tu correo</h3>
+      <p style="color:var(--cream-dim);">Te hemos enviado un enlace de confirmación.</p>
+      <p style="color:var(--cream-dim); font-size:0.85rem;">Haz clic en él para activar tu suscripción.</p>
+    </div>
+
+    <!-- Estado 3: Confirmado (clic) -->
+    <div id="mail-done" style="display:none; text-align:center; padding:2rem 0;">
+      <p style="font-size:1.5rem;">✅</p>
+      <h3 style="font-family:'Zilla Slab',serif; color:var(--rust);">¡Ya formas parte de $SIFO!</h3>
+      <p style="color:var(--cream-dim);">La roca no se detiene. Y tú tampoco.</p>
+      <p style="color:var(--cream-dim); font-size:0.85rem;">Recibirás avisos cuando la piedra se mueva.</p>
+    </div>
+  </div>
+</section>
+
+
+      
       
     </main>
   </div>
@@ -895,6 +939,36 @@
       });
     });
   });
+
+// Control de estados de la lista de correo
+const urlParams = new URLSearchParams(window.location.search);
+const confirmStatus = urlParams.get('confirm');
+
+const mailForm = document.getElementById('mail-form');
+const mailConfirm = document.getElementById('mail-confirm');
+const mailDone = document.getElementById('mail-done');
+
+if (confirmStatus === 'sent') {
+  mailForm.style.display = 'none';
+  mailConfirm.style.display = 'block';
+} else if (confirmStatus === 'done') {
+  mailForm.style.display = 'none';
+  mailDone.style.display = 'block';
+} else {
+  mailForm.style.display = 'block';
+  mailConfirm.style.display = 'none';
+  mailDone.style.display = 'none';
+}
+
+// Manejo del envío del formulario (redirige a la misma página con ?confirm=sent)
+document.getElementById('brevo-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  // Aquí iría la lógica de envío a Brevo (puedes usar fetch o la acción directa)
+  // Después de enviar, rediriges:
+  window.location.href = window.location.pathname + '?confirm=sent';
+});
+
+  
 </script>
 </body>
 </html>
