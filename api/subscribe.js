@@ -86,23 +86,4 @@ export default async function handler(req, res) {
   }
 }
 
-window.onload = function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const confirmStatus = urlParams.get('confirm');
 
-  const mailForm = document.getElementById('mail-form');
-  const mailConfirm = document.getElementById('mail-confirm');
-  const mailDone = document.getElementById('mail-done');
-
-  if (confirmStatus === 'sent') {
-    mailForm.style.display = 'none';
-    mailConfirm.style.display = 'block';
-  } else if (confirmStatus === 'done') {
-    mailForm.style.display = 'none';
-    mailDone.style.display = 'block';
-  } else {
-    mailForm.style.display = 'block';
-    mailConfirm.style.display = 'none';
-    mailDone.style.display = 'none';
-  }
-};
