@@ -947,23 +947,43 @@ function checkMailStatus() {
 
   if (!mailForm || !mailConfirm || !mailDone) return;
 
-  if (confirmStatus === 'sent') {
-    mailForm.style.display = 'none';
-    mailConfirm.style.display = 'block';
-    mailDone.style.display = 'none';
-  } else if (confirmStatus === 'done') {
-    mailForm.style.display = 'none';
-    mailConfirm.style.display = 'none';
-    mailDone.style.display = 'block';
+  // Si viene algún parámetro de confirmación ('sent' o 'done')
+  if (confirmStatus === 'sent' || confirmStatus === 'done') {
+    
+    // 1. Mostrar el estado correspondiente dentro del panel
+    if (confirmStatus === 'sent') {
+      mailForm.style.display = 'none';
+      mailConfirm.style.display = 'block';
+      mailDone.style.display = 'none';
+    } else if (confirmStatus === 'done') {
+      mailForm.style.display = 'none';
+      mailConfirm.style.display = 'none';
+      mailDone.style.display = 'block';
+    }
+
+    // 2. CAMBIAR LA SECCIÓN VISIBLE A 'MAIL' AUTOMÁTICAMENTE
+    // Desactivamos la sección activa (Home) y activamos la de Mail
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById('section-mail').classList.add('active');
+
+    // Actualizamos la pestaña activa en la barra lateral/menú
+    const mailBtn = document.querySelector('.nav-item[data-target="mail"]');
+    if (mailBtn) {
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      mailBtn.classList.add('active');
+    }
+
   } else {
+    // Estado normal sin parámetros
     mailForm.style.display = 'block';
     mailConfirm.style.display = 'none';
     mailDone.style.display = 'none';
   }
 }
 
-// Ejecutar al cargar la página sin machacar el resto del sitio
+// Ejecutar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', checkMailStatus);
+    
   </script>
 </body>
 </html>
