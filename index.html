@@ -829,7 +829,6 @@
     <!-- Estado 1: Formulario (por defecto) -->
     <div id="mail-form">
       <form id="brevo-form">
-        <!-- El hidden ya no es necesario porque la API usará variables de entorno -->
         <div style="margin-bottom: 1rem;">
           <label style="display:block; font-size:0.8rem; color:var(--cream-dim); margin-bottom:0.3rem;">Email *</label>
           <input type="email" name="email" required style="width:100%; padding:0.7rem; background:var(--panel-2); border:1px solid var(--border); border-radius:6px; color:var(--cream); font-family:'Inter',sans-serif;" />
@@ -968,7 +967,6 @@ document.getElementById('brevo-form').addEventListener('submit', async function(
   const email = formData.get('email');
   const name = formData.get('attributes.NOMBRE');
 
-  // Mostrar estado de carga en el botón
   const submitBtn = this.querySelector('button[type="submit"]');
   const originalText = submitBtn.textContent;
   submitBtn.textContent = 'Enviando...';
