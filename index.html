@@ -828,8 +828,8 @@
 
     <!-- Estado 1: Formulario (por defecto) -->
     <div id="mail-form">
-      <form id="brevo-form" action="https://api.brevo.com/v3/contacts" method="POST">
-        <input type="hidden" name="listIds" value="[TU_LISTA_ID]" />
+      <form id="brevo-form">
+        <!-- El hidden ya no es necesario porque la API usará variables de entorno -->
         <div style="margin-bottom: 1rem;">
           <label style="display:block; font-size:0.8rem; color:var(--cream-dim); margin-bottom:0.3rem;">Email *</label>
           <input type="email" name="email" required style="width:100%; padding:0.7rem; background:var(--panel-2); border:1px solid var(--border); border-radius:6px; color:var(--cream); font-family:'Inter',sans-serif;" />
@@ -960,12 +960,44 @@ if (confirmStatus === 'sent') {
   mailDone.style.display = 'none';
 }
 
-// Manejo del envío del formulario (redirige a la misma página con ?confirm=sent)
-document.getElementById('brevo-form').addEventListener('submit', function(e) {
+// Manejo del envío del formulario a través de la API de Vercel
+document.getElementById('brevo-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  // Aquí iría la lógica de envío a Brevo (puedes usar fetch o la acción directa)
-  // Después de enviar, rediriges:
-  window.location.href = window.location.pathname + '?confirm=sent';
+
+  const formData = new FormData(this);
+  const email = formData.get('email');
+  const name = formData.get('attributes.NOMBRE');
+
+  // Mostrar estado de carga en el botón
+  const submitBtn = this.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Enviando...';
+  submitBtn.disabled = true;
+
+  try {
+    const response = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, name }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      // Éxito: muestra la página de confirmación (estado "sent")
+      window.location.href = window.location.pathname + '?confirm=sent';
+    } else {
+      alert(result.message || 'Error al suscribirte. Inténtalo de nuevo.');
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  } catch (error) {
+    alert('Error de conexión. Inténtalo más tarde.');
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
 });
 
   
