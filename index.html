@@ -64,7 +64,7 @@
 
   /* sidebar (desktop) */
   .sidebar{
-    width: 260px;
+    width: 288px;
     flex-shrink: 0;
     background: var(--panel);
     border-right: 1px solid var(--border);
@@ -228,6 +228,22 @@
     filter: grayscale(0);
   }
 
+  .sidebar-footer a svg{
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    stroke: var(--cream-dim);
+    fill: none;
+    stroke-width: 1.8;
+    opacity: 0.55;
+    transition: all 0.2s ease;
+  }
+
+  .sidebar-footer a:hover svg{
+    opacity: 1;
+    stroke: var(--cream);
+  }
+  
   /* mobile top bar */
   .topbar{
     display: none;
@@ -530,7 +546,7 @@
       position: fixed;
       inset: 0 auto 0 0;
       z-index: 50;
-      width: 280px;
+      width: 300px;
       box-shadow: 4px 0 24px rgba(0,0,0,0.4);
     }
 
@@ -570,16 +586,6 @@
     line-height: 1.6;
     max-width: 54ch;
   }
-
-  .share-buttons {
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.share-btn {
-  flex: 1 1 80px; /* ancho mínimo para que no se comprima */
-  min-width: 70px;
-}
   
 </style>
 </head>
@@ -606,8 +612,8 @@
 
       <div class="nav-group">
         <button class="nav-item active" data-target="home" onclick="switchSection('home', this)">
-          <svg class="nav-icon-svg" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/> <span data-en="Home" data-es="Inicio">Home</span>
-          </svg>
+          <svg class="nav-icon-svg" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+          <span data-en="Home" data-es="Inicio">Home</span>
         </button>
       </div>
 
@@ -634,10 +640,13 @@
         </button>
       </div>
 
-      <div class="sidebar-footer">
+    <div class="sidebar-footer">
         <a href="https://x.com/sisifotoken" target="_blank" rel="noopener noreferrer"><img src="/x.png" alt="X" /></a>
         <a href="https://farcaster.xyz/sisifotoken" target="_blank" rel="noopener noreferrer"><img src="/farcaster.png" alt="Farcaster" /></a>
         <a href="https://discord.gg/MfSUnVXaP8" target="_blank" rel="noopener noreferrer"><img src="/discord.png" alt="Discord" /></a>
+        <a href="mailto:info@sisifotoken.xyz" title="info@sisifotoken.xyz">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </a>
         <div class="lang-toggle">
           <button class="lang-btn" id="langBtnEn" onclick="setLang('en')">EN</button>
           <button class="lang-btn" id="langBtnEs" onclick="setLang('es')">ES</button>
@@ -804,9 +813,6 @@
             </a>
             <a class="share-btn" href="https://warpcast.com/~/compose?text=%24SIFO&embeds[]=https%3A%2F%2Fsisifotoken.xyz%2F" target="_blank" rel="noopener noreferrer">
               <img src="/farcaster.png" alt="Farcaster" /> Farcaster
-            </a>
-            <a class="share-btn" href="mailto:info@sisifotoken.xyz" target="_blank" rel="noopener noreferrer">
-              <img src="/email-icon.png" alt="Email" /> Email
             </a>
           </div>
         </div>
