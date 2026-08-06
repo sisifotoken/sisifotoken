@@ -20,17 +20,13 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Email inválido' });
   }
 
-  // Leer variables de entorno
+  // Leer variables de entorno (que sabemos que son correctas)
   const API_KEY = process.env.BREVO_API_KEY;
-  const LIST_ID = process.env.BREVO_LIST_ID;
-
-  // **IMPORTANTE: Log para ver si las variables se cargan**
-  console.log('API_KEY cargada:', !!API_KEY); // true/false
-  console.log('LIST_ID cargada:', LIST_ID);
+  const LIST_ID = parseInt(process.env.BREVO_LIST_ID, 10);
 
   if (!API_KEY || !LIST_ID) {
     console.error('Faltan variables de entorno: BREVO_API_KEY o BREVO_LIST_ID');
-    return res.status(500).json({ message: 'Error de configuración del servidor: faltan variables de entorno' });
+    return res.status(500).json({ message: 'Error de configuración del servidor' });
   }
 
   try {
@@ -45,15 +41,25 @@ export default async function handler(req, res) {
         attributes: {
           NOMBRE: name || '',
         },
-        listIds: [parseInt(LIST_ID, 10)],
+        listIds: [LIST_ID],
         updateEnabled: true,
       }),
     });
 
-    const data = await response.json();
+    // **IMPORTANTE: Leer la respuesta como texto antes de parsear**
+    const responseText = await response.text();
+    let data = {};
+    try {
+      data = JSON.parse(responseText);
+    } catch (parseError) {
+      console.error('Error al parsear JSON. Respuesta recibida:', responseText);
+      return res.status(response.status).json({
+        message: 'El servidor de Brevo devolvió una respuesta inesperada.',
+        rawResponse: responseText, // Esto es para depuración, luego lo quitas
+      });
+    }
 
     if (!response.ok) {
-      // Si el error es que el contacto ya existe, lo tratamos como éxito
       if (response.status === 400 && data.message?.includes('already exists')) {
         return res.status(200).json({
           message: 'Ya estás en la lista. Recibirás nuestras novedades.',
@@ -73,7 +79,7 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Error interno en la función:', error);
+    console.error('Error interno:', error);
     return res.status(500).json({
       message: `Error interno del servidor: ${error.message}`,
     });
