@@ -585,6 +585,38 @@
       line-height: 1.6;
       max-width: 54ch;
     }
+
+  .spam-hint {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted var(--cream-dim);
+}
+.spam-hint::after {
+  content: attr(data-tooltip-en);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--panel-2);
+  color: var(--cream);
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+html[lang="es"] .spam-hint::after {
+  content: attr(data-tooltip-es);
+}
+.spam-hint:hover::after,
+.spam-hint:focus::after {
+  opacity: 1;
+}
+  
   </style>
 </head>
 <body>
@@ -853,9 +885,9 @@
     <div id="mail-confirm" style="display:none; text-align:center; padding:2rem 0;">
       <p style="font-size:1.5rem;">📬</p>
       <h3 style="font-family:'Zilla Slab',serif; color:var(--rust);" data-en="Check your email" data-es="Revisa tu correo">Check your email</h3>
-      <p style="color:var(--cream-dim);" data-en="We have sent you a confirmation link." data-es="Te hemos enviado un enlace de confirmación.">We have sent you a confirmation link.</p>
-      <br/>
-      <p style="color:var(--cream-dim); font-size:0.85rem;" data-en="Don't see it? Check your spam folder." data-es="¿No lo ves? Revisa la carpeta de spam.">Don't see it? Check your spam folder.</p>
+      <p style="color:var(--cream-dim);">
+        <span class="spam-hint" tabindex="0" data-en="We have sent you a confirmation link." data-es="Te hemos enviado un enlace de confirmación." data-tooltip-en="Don't see it? Check your spam folder." data-tooltip-es="¿No lo ves? Revisa la carpeta de spam.">We have sent you a confirmation link.</span>
+      </p>
     </div>
 
     <div id="mail-done" style="display:none; text-align:center; padding:2rem 0;">
