@@ -884,6 +884,13 @@
       // Sincroniza el idioma con el formulario de Brevo
       const brevoLocale = document.getElementById('brevo-locale');
       if(brevoLocale) brevoLocale.value = lang;
+
+      const brevoForm = document.getElementById('brevo-form');
+      if(brevoForm){
+        brevoForm.action = lang === 'es'
+          ? 'https://53d630ad.sibforms.com/serve/MUIFAON632w0VBRWhFt9bUiUuF_96mTy0e1FeDIOJGFXNK8rNIYuVksFSv7jQjYW9cF7qoCf0Xcaldvfsa3_vthTlLqovRl2krNCnpVqEE17YfziWx7PAR62-wucBAC23ld4-Amcf4ysGtb3sVkSuezCXx4RC1t5DDrNJTqJwYUAUC2K4MZY246nudaPmo0ooNMJGxxgKwcxgvmr9g=='
+          : 'https://53d630ad.sibforms.com/serve/MUIFAIllMdlpO4dKkoKUkz-Ns9BWsjLtZosZFQESohNwaRPekkc8RoPGWr-cKPNRDT8BDP8-yjRAPZLK1ouRusZb_dhoMFwk05c5vsV8FeeQ_XdqD0vNc7wl1mtRHPL5KfWtk54IggSy3ndyx1Nqw4B9-6ESY5x5IemyvR0R-i6AVRgf0X9Jd3NmvZJVunT1BmBQsZQhgwDSBFLFXQ==';
+      }
     }
 
     const browserLang = (navigator.language || 'en').toLowerCase();
