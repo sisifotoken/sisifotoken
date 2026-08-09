@@ -437,6 +437,19 @@
       color: var(--cream);
     }
 
+    /* separador */
+    .home-divider{
+      max-width: 640px;
+      height: 1px;
+      margin: 2rem 0;
+      background: linear-gradient(to right,
+        transparent,
+        var(--border-strong) 20%,
+        var(--border-strong) 80%,
+        transparent
+      );
+    }
+    
     .home-row{
       display: flex;
       flex-direction: column;
@@ -849,6 +862,8 @@ html[lang="es"] .spam-hint::after {
           </div>
         </div>
 
+        <div class="home-divider"></div>
+        
         <div class="home-row">
         
           <div class="panel video-thumb" id="teaser-wrapper">
