@@ -437,6 +437,54 @@
       color: var(--cream);
     }
 
+    .home-row{
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin-top: 2.5rem;
+    }
+    
+    .home-row .panel{
+      flex: 1 1 320px;
+      max-width: none;
+    }
+    
+    .video-thumb{
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+      display: flex;
+    }
+    
+    .video-thumb img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .video-thumb .play-overlay{
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .video-thumb .play-btn{
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--rust);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
     .info-row{
       display: flex;
       align-items: baseline;
@@ -741,17 +789,31 @@ html[lang="es"] .spam-hint::after {
           </div>
         </div>
 
-        <div class="panel" style="margin-top: 2.5rem;">
-          <p class="panel-title" data-en="Live. On three chains." data-es="En marcha. En tres cadenas.">Live. On three chains.</p>
-          <p style="color:var(--cream-dim); font-size:0.92rem; line-height:1.6;">
-            <span data-en="$SIFO is live on Base, Solana and Robinhood. Pick a chain from the menu to see contract, quote and where to buy." data-es="$SIFO ya está activo en Base, Solana y Robinhood. Elige una cadena desde el menú para ver el contrato, la cotización y dónde comprar.">$SIFO is live on Base, Solana and Robinhood. Pick a chain from the menu to see contract, quote and where to buy.</span>
-          </p>
-          <div style="display:flex; gap:0.6rem; margin-top:1rem;">
-            <img src="/base-chain.png" alt="Base" style="width:26px; height:26px; border-radius:50%;" />
-            <img src="/solana.png" alt="Solana" style="width:26px; height:26px; border-radius:50%;" />
-            <img src="/robinhood.png" alt="Robinhood" style="width:26px; height:26px; border-radius:50%;" />
+        <div class="home-row">
+        
+          <div class="panel video-thumb" id="teaser-wrapper">
+            <img src="https://img.youtube.com/vi/uwrKApJ9zuM/maxresdefault.jpg" alt="$SIFO teaser" />
+            <div class="play-overlay">
+              <div class="play-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="#1c1e21"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
           </div>
+        
+          <div class="panel">
+            <p class="panel-title" data-en="Live. On three chains." data-es="En marcha. En tres cadenas.">Live. On three chains.</p>
+            <p style="color:var(--cream-dim); font-size:0.92rem; line-height:1.6;">
+              <span data-en="$SIFO is live on Base, Solana and Robinhood. Pick a chain from the menu to see contract, quote and where to buy." data-es="$SIFO ya está activo en Base, Solana y Robinhood. Elige una cadena desde el menú para ver el contrato, la cotización y dónde comprar.">$SIFO is live on Base, Solana and Robinhood. Pick a chain from the menu to see contract, quote and where to buy.</span>
+            </p>
+            <div style="display:flex; gap:0.6rem; margin-top:1rem;">
+              <img src="/base-chain.png" alt="Base" style="width:26px; height:26px; border-radius:50%;" />
+              <img src="/solana.png" alt="Solana" style="width:26px; height:26px; border-radius:50%;" />
+              <img src="/robinhood.png" alt="Robinhood" style="width:26px; height:26px; border-radius:50%;" />
+            </div>
+          </div>
+        
         </div>
+      </div>
       </section>
 
       <!-- BASE -->
@@ -1030,6 +1092,11 @@ function checkMailStatus() {
   }
 }
 
+// Script del facade (yt)
+document.getElementById('teaser-wrapper').addEventListener('click', function() {
+  this.innerHTML = '<iframe width="100%" height="100%" style="position:absolute; inset:0; border:0;" src="https://www.youtube.com/embed/uwrKApJ9zuM?autoplay=1" title="$SIFO teaser" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+});
+    
 // Se ejecuta al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
   const brevoForm = document.getElementById('brevo-form');
