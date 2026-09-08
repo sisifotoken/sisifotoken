@@ -35,11 +35,12 @@
 <body>
   <!-- BANNER SUPERIOR -->
   <div class="top-banner" id="topBanner">
-    <span data-en="Live now on three chains" data-es="Ya disponible en tres cadenas">Live on three chains</span>
+    <span data-en="Live now on three chains" data-es="Ya disponible en 4 cadenas">Live on 4 chains</span>
     <div class="chains">
       <img src="/base-chain.png" alt="Base" />
       <img src="/solana.png" alt="Solana" />
       <img src="/robinhood.png" alt="Robinhood" />
+      <img src="/bnbchain.jpg" alt="Binance Smart Chain" />
     </div>
     <button class="top-banner-close" id="topBannerClose" aria-label="Close">&times;</button>
   </div>
@@ -80,6 +81,9 @@
         </button>
         <button class="nav-item" data-target="hood" onclick="switchSection('hood', this)">
           <img class="nav-icon" src="/robinhood.png" alt="" /> <span data-en="Robinhood" data-es="Robinhood">Robinhood</span>
+        </button>
+        <button class="nav-item" data-target="bsc" onclick="switchSection('hood', this)">
+          <img class="nav-icon" src="/bnbchain.png" alt="" /> <span data-en="BSC" data-es="BSC">BSC</span>
         </button>
       </div>
 
@@ -236,6 +240,24 @@
         </div>
       </section>
 
+            <!-- ROBINHOOD -->
+      <section class="section" id="section-bsc">
+        <div class="panel">
+          <p class="panel-title">BSC</p>
+          <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Binance Chain</span></div>
+          <div class="info-row"><span class="info-label" data-en="Quote" data-es="Cotización">Quote</span><span class="info-value">BNB</span></div>
+          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value copyable" title="Click to copy">0xd5ca7d71d5a92c15d4b2771fd8ffc2f6032d4444</span></div>
+          <div class="info-row"><span class="info-label" data-en="Total supply" data-es="Suministro total">Total supply</span><span class="info-value">1,000,000,000</span></div>
+          <div class="buy-panel">
+            <a class="buy-btn-disabled" href="https://four.meme/en/token/0xd5ca7d71d5a92c15d4b2771fd8ffc2f6032d4444" target="_blank" rel="noopener noreferrer"
+               style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:0.5rem; border-style:solid; border-color:var(--rust-dim); color:var(--cream); background:rgba(201,135,60,0.08);">
+              <img src="/virtuals.png" alt="virtuals.io" style="width:20px; height:20px; border-radius:50%;" />
+              <span data-en="Buy on Four.meme" data-es="Comprar en Four.meme">Buy on Four.meme</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      
       <!-- ROADMAP -->
       <section class="section" id="section-roadmap">
         <div class="panel" style="max-width:620px;">
