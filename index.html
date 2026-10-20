@@ -35,12 +35,13 @@
 <body>
   <!-- BANNER SUPERIOR -->
   <div class="top-banner" id="topBanner">
-    <span data-en="Live now on 4 chains" data-es="Ya disponible en 4 cadenas">Live on 4 chains</span>
+    <span data-en="Live now on 5 chains" data-es="Ya disponible en 4 cadenas">Live on 4 chains</span>
     <div class="chains">
       <img src="/base-chain.png" alt="Base" />
       <img src="/solana.png" alt="Solana" />
       <img src="/robinhood.png" alt="Robinhood" />
       <img src="/bnbchain.jpg" alt="Binance Smart Chain" />
+      <img src="/arc.jpg" alt="Arcus Chain" />
     </div>
     <button class="top-banner-close" id="topBannerClose" aria-label="Close">&times;</button>
   </div>
@@ -84,6 +85,10 @@
         </button>
         <button class="nav-item" data-target="bsc" onclick="switchSection('bsc', this)">
           <img class="nav-icon" src="/bnbchain.jpg" alt="" /> <span data-en="BSC" data-es="BSC">BSC</span>
+        </button>
+        </button>
+        <button class="nav-item" data-target="arc" onclick="switchSection('arc', this)">
+          <img class="nav-icon" src="/arc.jpg" alt="" /> <span data-en="Arcus" data-es="Arcus">Arcus</span>
         </button>
       </div>
 
@@ -257,6 +262,26 @@
           </div>
         </div>
       </section>
+
+      <!-- ARCUS -->
+      <section class="section" id="section-arc">
+        <div class="panel">
+          <p class="panel-title">Arcus</p>
+          <div class="info-row"><span class="info-label" data-en="Chain" data-es="Cadena">Chain</span><span class="info-value">Arcus</span></div>
+          <div class="info-row"><span class="info-label" data-en="Quote" data-es="Cotización">Quote</span><span class="info-value">USDC</span></div>
+          <div class="info-row"><span class="info-label" data-en="CA" data-es="CA">CA</span><span class="info-value copyable" title="Click to copy">0xF876180234E2B04C1faE191aDD6d2912a11b9aEB</span></div>
+          <div class="info-row"><span class="info-label" data-en="Total supply" data-es="Suministro total">Total supply</span><span class="info-value">1,000,000,000</span></div>
+          <div class="buy-panel">
+            <a class="buy-btn-disabled" href="https://argus.world/token/0xF876180234E2B04C1faE191aDD6d2912a11b9aEB" target="_blank" rel="noopener noreferrer"
+               style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:0.5rem; border-style:solid; border-color:var(--rust-dim); color:var(--cream); background:rgba(201,135,60,0.08);">
+              <img src="/argus.jpg" alt="argus" style="width:20px; height:20px; border-radius:50%;" />
+              <span data-en="Buy on argus.world" data-es="Comprar en argus.world">Buy on argus.world</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
       
       <!-- ROADMAP -->
       <section class="section" id="section-roadmap">
