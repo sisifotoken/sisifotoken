@@ -40,6 +40,7 @@ a{ color: inherit; }
   position: sticky;
   top: 0;
   height: 100dvh;
+  overflow-y: auto;
 }
 
 .brand{
@@ -146,7 +147,10 @@ a{ color: inherit; }
 .lang-toggle{
   display: flex;
   gap: 0.3rem;
-  margin-left: auto;
+  width: 100%;                 
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+  margin-left: 0;
 }
 
 .lang-btn{
